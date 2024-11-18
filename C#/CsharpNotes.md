@@ -157,7 +157,7 @@ Once a project is running we can debbug using breakpoints. We initiate a debbug 
 
 The tutorial will use Visual Studio, but all can be done using the terminal or VScode.
 
-#### Broswing the Docs
+#### Browsing the Docs
 [C# Documentation](https://learn.microsoft.com/en-us/dotnet/csharp/)
 
 ### Learning the C# Syntax
