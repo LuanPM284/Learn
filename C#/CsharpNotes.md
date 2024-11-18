@@ -161,10 +161,188 @@ The tutorial will use Visual Studio, but all can be done using the terminal or V
 [C# Documentation](https://learn.microsoft.com/en-us/dotnet/csharp/)
 
 ### Learning the C# Syntax
+Types, operators, date and time
 
+#### Essentials C# Building Blocks
+**Statements**
+
+Actions => Flow of the program => End with semicolon, no spaces or line changes. 
+
+We can denfine identifiers (sart with a letter or underscore and can contain letters, digits and underscores)
+
+**Comments**
+
+// For a comment line
+
+/*
+    Block comment
+*/
+
+**Variables**
+
+A variable hodls value. They must be of a type ( Integer, string, date...).
+We create a variable by declarating.
 
 ```cs
+// these are different for C#, a =! A
+int age;
+int Age;
+```
+CamelCase is a convention.
 
+Assigning a variable.
+
+```cs
+int age;
+// '=' is an Assignement operator
+age = 25;
+```
+#### Demo
+
+We create a new project name BethanysPieShopHRM.
+
+We can move lines by holdinh *alt + arrow keys*
+
+Or Comment a line or multiple selected with *CTRL + K + C* and unComment with *CTRL + K + U*
+
+**Types**
+
+C# is a strongly typed language.
+
+Size and location in memory, Data range and supported operations.
+
+Data types in C#: Predefined, Created
+
+Predefined (primitive data types):
+- bool
+- int
+- float
+- double
+- deciman
+- char
+
+- byte (sbyte) - short bute, numbers from 0 - 255
+- short (ushort)
+- object
+- string
+
+Creating an Integer Value
+```cs
+int a = 2;
+int b = a + 3; // an expression, types must be the same on both sides
+```
+Types are immutable.
+
+An exemple from the demo project:
+```cs
+// an int type, so numerical
+int monthlyWage = 1234;
+// we can addign in the same line, same types
+int months = 12, bonus = 1000;
+// bool true or false
+bool isActive = true;
+// a real type number, decimal
+double rating = 99.25;
+
+// byte only acepts up to 255
+//byte numberOfEmplyees = 300; // too big a number
+
+// varaible created, not assign any value
+int hoursWorked;
+
+// I can assign a value without the type if already exists
+hoursWorked = 125;
+
+hoursWorked = 148; //  I can change the value by reassigning
+
+montlyWage = true; // I get an error, since the var is an intn this is type dafety
+```
+**Using a const Value**
+
+A variable that does not change.
+```cs
+const double interestRate = 0.07;
+
+interestRate = 0.08; // error
+```
+
+**Strings**
+
+A list of characters. Stored as list of char objects.
+
+```cs
+string s1 = "Hello World";
+string s2 = string.empty;
+```
+Exemple:
+```cs
+string firstName = "Bethany";
+string lastName = "smith";
+
+string emptyString = "";
+
+Console.WriteLine("Please enter your name");
+string name = Console.ReadLine();
+```
+
+**Operators**
+
+Aritmetic, Equality, Logical and Assigment operators.
+(+,-,*,/,++,--)
+
+Exemple:
+```cs
+
+double ratePerHour = 12.34;
+int numberOfHoursWorked = 165;
+// here we use + and *
+double currentMonthWage = ratePerHour * numberOfHoursWorked + bonus;
+Console.WriteLine(currentMonthWage);
+
+ratePerHour += 3; // same as ratePerHour = ratePerHour + 3
+Console.WriteLine(ratePerHour);
+
+// not yet seen, a condition
+if (currentMonthWage > 2000)
+    Console.WriteLine("Top paid employee!");
+
+int numberOfEmployees = 15;
+numberOfEmployees--; // -1 to the variable
+
+bool a; // false by default, or nor assigned
+int b; // 0 by default
+```
+**Build-in types**
+
+[Documentation](https://learn.microsoft.com/en-us/dotnet/api/system.int32?view=net-8.0)
+
+Members on Primitive Types:
+```cs
+int intMaxValue = int.MaxValue;
+int intMinValue = int.MinValue;
+double doubleMaxValue = double.MaxValue;
+
+// for char; used to store single UNIcode characters, and require single quotes ''
+char myChar = 'a';
+bool isWhiteSpace = char.IsWhiteSpave(myChar);
+bool isDigit = char.IsDigit(myChar);
+bool isPunctuaction = char.IsPunctuaction(myChar);
+```
+Exemple:
+```cs
+// we can use the deggub mode, and hover the mouse pointer over to see the values stored
+
+int intMaxValue = int.MaxValue; // 21,474,883,647 for an int
+int intMinValue = int.MinValue; // -21,474,883,647
+
+char userSelection = 'a'; // 97 on unicode
+char uppperVersion = char.ToUpper(userSelection); // A: 65 on unicode 
+
+bool isDigit = char.IsDigit(userSelection); // false
+
+bool isLetter = char.IsLetter(userSelection); // true
+
+Console.ReadLine(); // this is used just to stop the debbug here 
 ```
 ```cs
 ```
