@@ -1,10 +1,11 @@
 # Personal Notes on learing C#
 There are my notes, a way to save information while on my journey to learn `C#`.
 
-I will be using *pluralsight* course for an introduction.
+I will be using *pluralsight* course for an introduction to the language and environment.
 
 ## C# Fundamentals
-### Setting up environment
+### Getting Started with C# and .NET
+#### Setting up environment
 Course uses: .NET 8, C# 12. For beginners *what-is-programming* recommended.
 
 For this course the exercices can be found at *c-sharp-10-fundamentals-exercises*.
@@ -22,7 +23,7 @@ IDE recommended: Visual Studio 2022; (Rider, .NET VsCode).
 
 I will be using Visual Studio 2022.
 
-### Projects
+#### Projects
 
 Container for code files => Compiled into exe file => Different templates
 
@@ -76,7 +77,7 @@ HelloFromCSharp/
 │   │   │   └── HelloFromCSharp.pdb 
 ...
 ```
-### Debugging
+#### Debugging
 
 Visual Studio has a degugger. It used Breakpoints: pause the running code, inspect and see different code lines.
 
@@ -87,7 +88,7 @@ For the breack point we can click on the left most side of the line, a grey circ
 
 Once on debugging mode, we can run the application step by step (line by line) using the step over arrow on the top middle part of the screen, or click F10.
 
-### Building application using VScode and the CLI
+#### Building application using VScode and the CLI
 
 CLI: commmand-line interface => for windows we use powershell
 
@@ -97,7 +98,7 @@ Creating a New project:
 
 `dotnet new` for a  new application\
 `dotnet run` to execute an application\
-`dotnet build`
+`dotnet build` to build the project
 
 ```bash
 dotnet new console -n "FirstProgram"
@@ -111,7 +112,7 @@ First, install the SDk: https://dotnet.microsoft.com/en-us/download/dotnet/8.0
 
 On PowerShell:
 ```sh
-cd to project Directory, my case Learn\C#\Projects
+cd to project Directory, my case Learn/C#/Projects
 
 dotnet # gives us some information
 
@@ -136,28 +137,30 @@ HelloFromCLI/
 ...
 ```
 
-To run an app we write on terminal or powershell: ``dotnet run Program.cs`
+To run an app we write on terminal or powershell: `dotnet run Program.cs`
 
 But from VScode we can use an extension (C# dev kit) that helps us run the app and the debbug.
 
 Using Vscode we can do: 
-- `CTRL + SHIft + P`
-- write `.NET new project`
-- choose the kind of project `console`
-- select a folder
-- define name
-- accept
+- `CTRL + SHIft + P` to open a project manager
+- write `.NET new project` to create new
+- choose the kind of project, this case `console`
+- select a folder, by files manager
+- define name of the Program.cs
+- accept, VScode will open the folder
 
-VScode gives us a Solution Explorer just under the normal files. Like we have on visual studio
+VScode gives us a Solution Explorer just under the internal normal files manager. Like we have on visual studio.
 
 We can than build the application by right clicking the project folder and selecting build.
 
-Once a project running we can debbug using breakpoints, clicking F5 or right clicking the window.
+Once a project is running we can debbug using breakpoints. We initiate a debbug by clicking F5 or right clicking the window.
 
 The tutorial will use Visual Studio, but all can be done using the terminal or VScode.
 
-### Broswing the Docs
+#### Broswing the Docs
 [C# Documentation](https://learn.microsoft.com/en-us/dotnet/csharp/)
+
+### Learning the C# Syntax
 
 
 ```cs
