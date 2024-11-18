@@ -1,0 +1,15 @@
+D:\Code\Learn\C#\Projects\HelloWorldFromCLI\obj\Debug\net9.0\HelloWorldFromCLI.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code\Learn\C#\Projects\HelloWorldFromCLI\obj\Debug\net9.0\HelloWorldFromCLI.AssemblyInfoInputs.cache
+D:\Code\Learn\C#\Projects\HelloWorldFromCLI\obj\Debug\net9.0\HelloWorldFromCLI.AssemblyInfo.cs
+D:\Code\Learn\C#\Projects\HelloWorldFromCLI\obj\Debug\net9.0\HelloWorldFromCLI.csproj.CoreCompileInputs.cache
+D:\Code\Learn\C#\Projects\HelloWorldFromCLI\obj\Debug\net9.0\HelloWorldFromCLI.sourcelink.json
+D:\Code\Learn\C#\Projects\HelloWorldFromCLI\bin\Debug\net9.0\HelloWorldFromCLI.exe
+D:\Code\Learn\C#\Projects\HelloWorldFromCLI\bin\Debug\net9.0\HelloWorldFromCLI.deps.json
+D:\Code\Learn\C#\Projects\HelloWorldFromCLI\bin\Debug\net9.0\HelloWorldFromCLI.runtimeconfig.json
+D:\Code\Learn\C#\Projects\HelloWorldFromCLI\bin\Debug\net9.0\HelloWorldFromCLI.dll
+D:\Code\Learn\C#\Projects\HelloWorldFromCLI\bin\Debug\net9.0\HelloWorldFromCLI.pdb
+D:\Code\Learn\C#\Projects\HelloWorldFromCLI\obj\Debug\net9.0\HelloWorldFromCLI.dll
+D:\Code\Learn\C#\Projects\HelloWorldFromCLI\obj\Debug\net9.0\refint\HelloWorldFromCLI.dll
+D:\Code\Learn\C#\Projects\HelloWorldFromCLI\obj\Debug\net9.0\HelloWorldFromCLI.pdb
+D:\Code\Learn\C#\Projects\HelloWorldFromCLI\obj\Debug\net9.0\HelloWorldFromCLI.genruntimeconfig.cache
+D:\Code\Learn\C#\Projects\HelloWorldFromCLI\obj\Debug\net9.0\ref\HelloWorldFromCLI.dll

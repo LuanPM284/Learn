@@ -1,0 +1,15 @@
+D:\Code\Learn\C#\Projects\HelloWorldFromVScode\HelloWorldFromVScode\bin\Debug\net9.0\HelloWorldFromVScode.exe
+D:\Code\Learn\C#\Projects\HelloWorldFromVScode\HelloWorldFromVScode\bin\Debug\net9.0\HelloWorldFromVScode.deps.json
+D:\Code\Learn\C#\Projects\HelloWorldFromVScode\HelloWorldFromVScode\bin\Debug\net9.0\HelloWorldFromVScode.runtimeconfig.json
+D:\Code\Learn\C#\Projects\HelloWorldFromVScode\HelloWorldFromVScode\bin\Debug\net9.0\HelloWorldFromVScode.dll
+D:\Code\Learn\C#\Projects\HelloWorldFromVScode\HelloWorldFromVScode\bin\Debug\net9.0\HelloWorldFromVScode.pdb
+D:\Code\Learn\C#\Projects\HelloWorldFromVScode\HelloWorldFromVScode\obj\Debug\net9.0\HelloWorldFromVScode.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code\Learn\C#\Projects\HelloWorldFromVScode\HelloWorldFromVScode\obj\Debug\net9.0\HelloWorldFromVScode.AssemblyInfoInputs.cache
+D:\Code\Learn\C#\Projects\HelloWorldFromVScode\HelloWorldFromVScode\obj\Debug\net9.0\HelloWorldFromVScode.AssemblyInfo.cs
+D:\Code\Learn\C#\Projects\HelloWorldFromVScode\HelloWorldFromVScode\obj\Debug\net9.0\HelloWorldFromVScode.csproj.CoreCompileInputs.cache
+D:\Code\Learn\C#\Projects\HelloWorldFromVScode\HelloWorldFromVScode\obj\Debug\net9.0\HelloWorldFromVScode.sourcelink.json
+D:\Code\Learn\C#\Projects\HelloWorldFromVScode\HelloWorldFromVScode\obj\Debug\net9.0\HelloWorldFromVScode.dll
+D:\Code\Learn\C#\Projects\HelloWorldFromVScode\HelloWorldFromVScode\obj\Debug\net9.0\refint\HelloWorldFromVScode.dll
+D:\Code\Learn\C#\Projects\HelloWorldFromVScode\HelloWorldFromVScode\obj\Debug\net9.0\HelloWorldFromVScode.pdb
+D:\Code\Learn\C#\Projects\HelloWorldFromVScode\HelloWorldFromVScode\obj\Debug\net9.0\HelloWorldFromVScode.genruntimeconfig.cache
+D:\Code\Learn\C#\Projects\HelloWorldFromVScode\HelloWorldFromVScode\obj\Debug\net9.0\ref\HelloWorldFromVScode.dll

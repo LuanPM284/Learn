@@ -70,19 +70,98 @@ HelloFromCSharp/
 ├── bin/
 │   └── Debug/
 │   │   └── net8.0/
-│   │   │   └── HelloFromCSharp.json 
-│   │   │   └── HelloFromCSharp.dll 
-│   │   │   └── HelloFromCSharp.exe     (our executable file) 
+│   │   │   ├──  HelloFromCSharp.json 
+│   │   │   ├──  HelloFromCSharp.dll 
+│   │   │   ├──  HelloFromCSharp.exe     (our executable file) 
 │   │   │   └── HelloFromCSharp.pdb 
 ...
 ```
+### Debugging
+
+Visual Studio has a degugger. It used Breakpoints: pause the running code, inspect and see different code lines.
+
+We use the *green arrow* when running the program, the debugger is active.
+
+For the breack point we can click on the left most side of the line, a grey circle
+(red once clicked) is the indication. Can also see the memory space, by hovering mouse over variables. We can click continue next.
+
+Once on debugging mode, we can run the application step by step (line by line) using the step over arrow on the top middle part of the screen, or click F10.
+
+### Building application using VScode and the CLI
+
+CLI: commmand-line interface => for windows we use powershell
+
+`dotnet` for running .net applications.
+
+Creating a New project:
+
+`dotnet new` for a  new application\
+`dotnet run` to execute an application\
+`dotnet build`
+
+```bash
+dotnet new console -n "FirstProgram"
+# dotnet new: create new app
+# console: type of app
+# -n "FirstProgram": name of app
+```
+Here VScode will be used for the demo project.
+
+First, install the SDk: https://dotnet.microsoft.com/en-us/download/dotnet/8.0 
+
+On PowerShell:
+```sh
+cd to project Directory, my case Learn\C#\Projects
+
+dotnet # gives us some information
+
+dotnet new # gives us some types of applications I can create
+
+dotnet new console -n "HelloWorldFromCLI" # creates new app and names the directory with flag -n
+
+```
+File structure of new project:
+```
+...
+HelloFromCSharp/
+HelloFromCLI/
+├── obj/
+│   ├──  HelloWorldFromCLI.csproj.nuget.dgspec.json
+│   ├──  HelloWorldFromCLI.csproj.nuget.g.props
+│   ├──  HelloWorldFromCLI.csproj.nuget.g.targets
+│   ├──  project.assets.json
+│   └── project.assets.cache
+├── HelloWorldFromCLI.csproj
+├── Program.cs
+...
+```
+
+To run an app we write on terminal or powershell: ``dotnet run Program.cs`
+
+But from VScode we can use an extension (C# dev kit) that helps us run the app and the debbug.
+
+Using Vscode we can do: 
+- `CTRL + SHIft + P`
+- write `.NET new project`
+- choose the kind of project `console`
+- select a folder
+- define name
+- accept
+
+VScode gives us a Solution Explorer just under the normal files. Like we have on visual studio
+
+We can than build the application by right clicking the project folder and selecting build.
+
+Once a project running we can debbug using breakpoints, clicking F5 or right clicking the window.
+
+The tutorial will use Visual Studio, but all can be done using the terminal or VScode.
+
+### Broswing the Docs
+[C# Documentation](https://learn.microsoft.com/en-us/dotnet/csharp/)
 
 
 ```cs
-```
-```cs
-```
-```cs
+
 ```
 ```cs
 ```
