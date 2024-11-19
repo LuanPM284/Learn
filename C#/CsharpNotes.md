@@ -23,6 +23,8 @@ IDE recommended: Visual Studio 2022; (Rider, .NET VsCode).
 
 I will be using Visual Studio 2022.
 
+> fix no suggestions appearing: Tools -> Options -> Text Editor -> [Language] -> General and making sure that Auto list members and Parameter information are checked
+
 #### Projects
 
 Container for code files => Compiled into exe file => Different templates
@@ -197,7 +199,6 @@ int age;
 // '=' is an Assignement operator
 age = 25;
 ```
-#### Demo
 
 We create a new project name BethanysPieShopHRM.
 
@@ -331,7 +332,6 @@ bool isPunctuaction = char.IsPunctuaction(myChar);
 Exemple:
 ```cs
 // we can use the deggub mode, and hover the mouse pointer over to see the values stored
-
 int intMaxValue = int.MaxValue; // 21,474,883,647 for an int
 int intMinValue = int.MinValue; // -21,474,883,647
 
@@ -343,6 +343,94 @@ bool isDigit = char.IsDigit(userSelection); // false
 bool isLetter = char.IsLetter(userSelection); // true
 
 Console.ReadLine(); // this is used just to stop the debbug here 
+```
+**Working with Dates**
+
+DateTime, someDateTime, TimeSpan
+
+```cs
+DateTime emplyeeStartDate = new DateTime(2025,03,28);
+DateTime today = DateTime.Today;
+DateTime TwoDaysTime = someDateTime.AddDays(2);
+DayOfWeek day = someDateTime.DayOfWeek;
+bool isDST = someDateTime.IsDaylightSavingTime();
+```
+Exemple:
+```cs
+// instanciate some dates, we choose
+DateTime hireDate = new DateTime(2022,3,28,14,30,0);
+Console.WriteLine(hireDate);
+
+DateTime exitDate = new DateTime(2025,12,11);
+
+// operations with dates
+DateTime startDate = hireDate.AddDays(15);
+Console.WriteLine(startDate);
+
+// using a function to check if correct month
+DateTime currentDate = DateTime.Now;
+bool areWeInDst = currentDate.IsDaylightSavingTime();
+
+// here we start wotking with time and not date
+// three variables, the time now, a timespan and the end hour
+DateTime startHour = DateTime.Now;
+TimeSpan workTime = new TimeSpan(8, 35, 0);
+DateTime endHour = startHour.Add(workTime);
+
+Console.WriteLine(startHour);
+Console.WriteLine(endHour);
+
+Console.WriteLine(startHour.ToLongDateString());
+Console.WriteLine(endHour.ToShortTimeString());
+// output:
+// mardi 19 novembre 2024
+// 01:27
+```
+
+**Converting Between Types**
+
+Implicit conversion\
+`int a = 123456789;`\
+`long l = a // converting int to a long, since long can tale larger integer numbers, not data is lost`
+
+Casting (Explicit conversion)\
+`double d = 123456789.0`\
+`int a = (int) d // we do lose data, but we can force it`
+
+Helpers
+
+Exemple:
+```cs
+int numberOfhoursWorked = 165;
+long veryLongMonth = numberOfhoursWorked;// ok
+
+double d = 123456789.0;
+
+//int x = d; // error
+int x = (int) d; // ok
+
+int intVeryLongMonth = (int) veryLongMonth;
+```
+**Implicit Typing**
+
+|Explicit typing| Implicit typing|
+|---|---|
+|`int a = 123;` | `var a = 123 //a will be an integer;`|
+|`bool b = true;`|`var b = true //b will be a boolean;`|
+|`double d = 11.0;`|`var d = 11.0 //d will be a double;`|
+
+Using `var` we can say the type is *inferred*. No always as readable. Can also be used with a `DateTime` type object.
+
+We cant't create a `var` type without a value.
+
+exe: `var employeeAge; // it will not compile`
+
+#### Adding Decision and Iteration Statements in C#
+
+
+```cs
+```
+```cs
 ```
 ```cs
 ```

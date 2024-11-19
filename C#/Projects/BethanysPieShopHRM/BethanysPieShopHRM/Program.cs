@@ -58,14 +58,52 @@ int months = 12, bonus = 1000;
 //bool a; // false by default, or nor assigned
 //int b; // 0 by default
 
-int intMaxValue = int.MaxValue;
-int intMinValue = int.MinValue;
+//int intMaxValue = int.MaxValue;
+//int intMinValue = int.MinValue;
 
-char userSelection = 'a';
-char uppperVersion = char.ToUpper(userSelection);
+//char userSelection = 'a';
+//char uppperVersion = char.ToUpper(userSelection);
 
-bool isDigit = char.IsDigit(userSelection);
+//bool isDigit = char.IsDigit(userSelection);
 
-bool isLetter = char.IsLetter(userSelection);
+//bool isLetter = char.IsLetter(userSelection);
 
-Console.ReadLine();
+
+//DateTime hireDate = new DateTime(2022,3,28,14,30,0);
+//Console.WriteLine(hireDate);
+
+//DateTime exitDate = new DateTime(2025,12,11);
+
+//DateTime invalidDate = new DateTime(2025,15,11);
+
+//DateTime startDate = hireDate.AddDays(15);
+//Console.WriteLine(startDate);
+
+
+//DateTime currentDate = DateTime.Now;
+//bool areWeInDst = currentDate.IsDaylightSavingTime();
+
+//DateTime startHour = DateTime.Now;
+//TimeSpan workTime = new TimeSpan(8, 35, 0);
+//DateTime endHour = startHour.Add(workTime);
+
+//Console.WriteLine(startHour);
+//Console.WriteLine(endHour);
+
+
+//Console.WriteLine(startHour.ToLongDateString());
+//Console.WriteLine(endHour.ToShortTimeString());
+// output:
+// mardi 19 novembre 2024
+// 01:27
+
+int numberOfhoursWorked = 165;
+
+long veryLongMonth = numberOfhoursWorked;
+
+double d = 123456789.0;
+
+//int x = d; // error
+int x = (int) d; // ok
+
+int intVeryLongMonth = (int)veryLongMonth;
