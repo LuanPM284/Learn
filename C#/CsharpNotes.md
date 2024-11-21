@@ -427,9 +427,100 @@ exe: `var employeeAge; // it will not compile`
 
 #### Adding Decision and Iteration Statements in C#
 
+*Boolean Values:*
+- `True` or `false`
+- `bool` type
+- Boolean operators:
 
+|Operator|Example|
+|---|---|
+|==|a == b|
+|!=| a != b|
+|> or <| a > 10|
+|>= or <=| a <= 10|
+
+|Boolean Logical Operators||
+|---|---|
+|&&|AND|
+| \|\| |OR|
+
+> Exemples can be found on the m4 file, inside c-sharp-10-fundamentals-exercises ( only on local, machine)
+
+*if statements:*\
+Structure:
 ```cs
+if(some Boolean expression){
+    //Other statements
+}
+else
+{
+    //Other statements
+    // The else blok is optional
+}
+For one statement we can ommit the curly braces
+```cs
+if(some Boolean expression)
+    //Other statements ;
+else
+    //Other statements ;
 ```
+For multiple conditions
+```cs
+if(Boolean expression)
+{
+    //Statement
+}
+else if(Boolean expression)
+{
+    //Statement
+}
+else
+{
+    //Statement
+}
+```
+
+*switch statement*
+
+Structure:
+```cs
+switch(expression)
+{
+    case constant expression 1:
+        //Other statements
+        break;
+    case relational expression 2:
+        //Other statements
+        break;
+    ...
+    default:
+        //Other statment
+        break;
+}
+
+//We can group equal outputs with a same case
+switch()
+{
+    case expression 1:
+    case expression 2:
+        //Output
+    break;
+    ...
+    default:
+        //Output
+        break; 
+}
+```
+Some rules:
+- Works for most data types
+but not float and double
+adding interations
+- Case labels use a pattern: constant or relational.
+- Each case must be unique
+- First "true" will get executes (top to bottom)
+- Default can be placed wherever we cant, always evaluated last
+
+
 ```cs
 ```
 ```cs
