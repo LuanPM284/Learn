@@ -879,10 +879,98 @@ namespace ConsoleApp1
     }
 }
 ```
+#### Working with strings
 
+Recap for Strings:
 ```cs
+string firstName = "Bethany"; // type
+string lastName = "Smith";
+string s;
+s = fristName; // reassign variable
+var userName = "Bethany$"; // implicit typing
+userName = userName.ToLower();
+
+userName = "";//identical to string.Empty
 ```
+Some Methods for strings
+|Syntax|Explanation|
+|---|---|
+|`int l = myString.Length;`| Get the length of the string|
+|`string upper = myString.ToUpper();`|Set the string to uppercase|
+|`string lower = myString.ToLowert();`|Set the string to lowercasse|
+|`bool b = myString.Contains("Hello);`|Check if a string contains "Hello", return bool|
+|`string s = myString.Replace("a","b");`|Replace "a" with "b" in the string|
+|`strin sub = myString.Substring(1, 3);`|Get a part of a string(zero-based)|
+|`myString.Trim();`|Removes blank spaces|
+Concatenating Multiple Strings
 ```cs
+string s1 = "Learning C# "; //notice the extra spacce at the end
+string s2 = "is awesome";
+string s3 = s1 + s2;
+// other option
+string s3 = String.Concat(s1,s2);
+//Output: "Learning C# is awesome" 
 ```
+Better readability
 ```cs
+string employeeName = "Bethany";
+int age = 34;
+string greetingText = "Hello" + employeeName + ", you are" + age + "years";
+//Output: Hello Bethany, you are 34 years
+
+// String.Format()
+string greetingText = 
+    String.Format("Hello {0}, tou are {1} years", employeeName, age);
+//Output: Hello Bethany, you are 34 years
+
+// String Interpolation
+string greetingText = $"Hello {employeeName}, you are {age} years";
 ```
+---
+Using Escape Characters
+- Always start with a \
+```cs
+Console.WriteLine("Here are the employee details: \nBethany \tSmith");
+// \n for a new line
+// \t for a tab space
+```
+- Representing a File Path
+```cs
+// Use a backslash
+string escapedFilePath = "C:\\Documents\\readme.txt"
+//Using Verbatim Strings
+string verbatimFilePath = @"C:\Documents\readme.txt"
+```
+
+Testing Strings for Equality
+```cs
+// C# is case sensitive
+string firstName = "Bethany"
+bool b1 = fristName == "Bethnay";//true
+bool b1 = fristName == "bethnay";//false
+bool b1 = fristName.Equals("Bethany");//true
+
+//We can compare by putting all on the same level
+
+bool b = firstName.ToUpper() == anotherString.ToUpper();
+
+// OR ToLower();
+```
+Parsing from String to Other Types
+```cs
+//A read method avveprs strings
+string w = Console.ReadLine();
+double wage = double.Parse(x) //convert to double
+
+bool active = bool.Parse("true")
+
+//Sometimes we can't be sure if parsing is possible, we use
+TryParse();
+// exe:
+string enteredText = "true";
+if (bool.TryParse(enteredText, out bool b))// Input, Output
+{
+    Console.WriteLine($"The value is {b}")
+}
+```
+#### 
