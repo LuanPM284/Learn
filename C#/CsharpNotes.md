@@ -81,7 +81,7 @@ HelloFromCSharp/
 ```
 #### Debugging
 
-Visual Studio has a degugger. It used Breakpoints: pause the running code, inspect and see different code lines.
+Visual Studio has a degugger. It used Breakpoints (F9 do add): pause the running code, inspect and see different code lines.
 
 We use the *green arrow* when running the program, the debugger is active.
 
@@ -614,6 +614,275 @@ for(int i =0;i < max;i++)
 
 
 ```
-#### 
+#### Methods
+
+A way to group and reuse code.
+
+**Undestanding Methods**
+
+~~ Function or subroutines
+- Code block
+- Receives paramenters (arguments) and returns value 
+- Readable code and code reuse
+- Declared within a class or struct
+
+Structure:
+```cs
+<access modifier><return type> Method_name(Paremeters)
+{
+    //method statements
+}
+exe:
+```cs
+//Since we have a return type (int) we need a return statement, else we will get an error
+public int AddTwoNumbers(int a, int b){
+    return a + b; //stops the execution
+}
+```
+Method without a Return Value
+```cs
+public void DisplaySum(int a, int b){
+    int sum = a + b;
+    Console.WriteLine("The sum is " + sum);
+}
+```
+Invoking a Method
+```cs
+//We can pass arguments: values for the parameter(s)
+...
+DisplaySum(3,52);
+//For the method with int return we will assign a varialbe to store the result
+int result = AddTwoNumbers(55,44);
+...
+```
+Creating a Method
+
+First on the same Program.cs 
+```cs
+int amount = 1234;
+int months = 12;
+
+//For the void version
+CalculateYearlyWage(amount, months);
+
+//For the int version
+int yearlyWage = CalculateYearlyWage(amount, months);
+
+Console.WriteLine($"Yealy wage: {yearlyWage}");
+
+Console.ReadLine();
+
+//Void does not return a value so we can call the method
+static void CalculateYearlyWage(int monthlyWage, int numberOfMonthsWorked)
+{
+   Console.WriteLine($"Yearly wage: {monthlyWage * numberOfMonthsWorked}");
+}
+
+// Here the return must be a int type
+static int CalculateYearlyWage(int monthlyWage, int numberOfMonthsWorked)
+{
+    //Console.WriteLine($"Yearly wage: {monthlyWage * numberOfMonthsWorked}");
+    if (numberOfMonthsWorked == 12)//let's add a bonus month
+    {
+        return monthlyWage * (numberOfMonthsWorked + 1);
+    }
+    return monthlyWage * numberOfMonthsWorked;
+}
+```
+---
+Adding a Helper File\
+We will refactor (organize, maintaining the overall functionality) or code, starting by creating a Class.
+
+We will add a new file to our project, called *Utilities.cs*. Once created using Visual Studio we get this template:
+```cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BethanysPieShopHRM
+{
+    internal class Utilities
+    {
+    }
+}
+```
+Now we will start working with Classes that are not present on the same file.
+```cs
+//Utilities.cs
+...
+namespace BethanysPieShopHRM
+{
+    internal class Utilities
+    {
+        public static int CalculateYearlyWage(int monthlyWage, int numberOfMonthsWorked)
+        {
+            //Console.WriteLine($"Yearly wage: {monthlyWage * numberOfMonthsWorked}");
+            //return monthlyWage * numberOfMonthsWorked;
+
+            if (numberOfMonthsWorked == 12)//let's add a bonus month
+            {
+                return monthlyWage * (numberOfMonthsWorked + 1);
+            }
+            return monthlyWage * numberOfMonthsWorked;
+        }
+    }
+}
+```
+Now we can invoke the created class, by using the correct syntax:
+```cs
+//This will allow access to the Class
+using BethanysPieShopHRM;
+
+int amount = 1234;
+int months = 12;
+//Notice the 'Utilisies.'
+int yearlyWage = Utilities.CalculateYearlyWage(amount, months);
+
+Console.WriteLine($"Yealy wage: {yearlyWage}");
+
+Console.ReadLine();
+```
+---
+Calling the Correct Method
+
+- Method name
+- Paremeter types and arguments
+- Number of parameters
+
+Method Overloading: When we have method with the same name, but with differet number or type of parameters.
+
+exe:
+```cs
+DisplaySum()
+
+public static void DisplaySum (int a, int b)
+{ ... }
+
+public static void DisplaySum (int a, int b, int c)
+{ ... }
+
+//Exemple:
+
+public static int CalculateYearlyWage(int monthlyWage, int numberOfMonthsWorked)
+{
+    //Console.WriteLine($"Yearly wage: {monthlyWage * numberOfMonthsWorked}");
+    //return monthlyWage * numberOfMonthsWorked;
+
+    if (numberOfMonthsWorked == 12)//let's add a bonus month
+    {
+        return monthlyWage * (numberOfMonthsWorked + 1);
+    }
+    return monthlyWage * numberOfMonthsWorked;
+}
+
+public static int CalculateYearlyWage(int monthlyWage, int numberOfMonthsWorked, int bonus)
+{
+    Console.WriteLine($"This early wage is: {monthlyWage*numberOfMonthsWorked+bonus}");
+    return monthlyWage * numberOfMonthsWorked + bonus;
+}
+
+public static double CalculateYearlyWage(double monthlyWage, double numberOfMonthsWorked, double bonus)
+{
+    Console.WriteLine($"This early wage is: {monthlyWage * numberOfMonthsWorked + bonus}");
+    return monthlyWage * numberOfMonthsWorked + bonus;
+}
+```
+---
+Understanding Variable Scope
+
+- Variables exist in a defined region where they can be called or modified.
+- For a function, new variables created inside are called *local variable*
+- Global variables are shared for all files
+
+More options with Methods
+- Optional parameters
+    - Sepcify default values for one or more paremeters
+    - Caller can omit the optional ones
+
+    Method with optional parameters
+
+    ```cs
+    public int AddNumbers(int a, int b, int c = 100)
+    {
+        int sum = a + b + c;
+        return sum;
+    };
+    ```
+    Calling the method
+
+    ```cs
+    //no third parameter
+    AddNumbers(10,20);
+    AddNumbers(10,20,30);
+    ```
+
+- Named arguents
+    - Not required to follow order of parameters
+    - One or more parameters can have a name defined when invoking the method
+
+    Method with parameters
+    ```cs
+    public static AddNumbers(int a, int b)
+    {
+        ...
+    };
+    ```
+    Using named arguments
+    ```cs
+    AddNumbers(b:10,a:20);
+    //We can also use variables when calling
+    int x = 1;
+    int y = 2;
+    AddNums(a:x,b:y);
+    ```
+
+- Expression-bodied syntax // Or arrow function for JS
+    - 
+
+```cs
+public static void UsingExpressionBodiedSyntax()
+{
+    int amount = 1234;
+    int months = 12;
+    int bonus = 500;
+
+    int yearlyWageForEmplyee1 = CalculateYearlyWageExpressionBodied(int bonus,int monthlyWage,int numberOfMonthsWorked);
+
+    Console.WriteLine($" Yearly wage for employee 1(Bethany): {yearlyWageForEmployee1}");
+}
+
+public static int CalculateYearlyWageExpressionBodied(int bonus,int monthlyWage,int numberOfMonthsWorked) => monthlyWage * numberOfMonthsWorked + bonus;
+```
+---
+Introducing the Main Method (is unique)
+- Entry method which gets called upon start of the app ( by convention called Program.cs)
+- Gets created implicitly now
+- Top-level statements is default way
+
+Exemple from Current and pre-C#10
+```cs
+//Program.cs (current), has Top-Level statements
+Console.WriteLine("Hello, world!");
+
+//Program.cs (pre-C#10)
+Using System
+
+namespace ConsoleApp1
+{
+    internal class Program
+    {
+        statix void Main(string[] args){
+            Console.WriteLine("Hello, world!");   
+        }
+    }
+}
+```
+
+```cs
+```
+```cs
+```
 ```cs
 ```
