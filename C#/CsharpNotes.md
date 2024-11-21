@@ -445,7 +445,7 @@ exe: `var employeeAge; // it will not compile`
 | \|\| |OR|
 
 > Exemples can be found on the m4 file, inside c-sharp-10-fundamentals-exercises ( only on local, machine)
-
+---
 *if statements:*\
 Structure:
 ```cs
@@ -479,9 +479,8 @@ else
     //Statement
 }
 ```
-
-*switch statement*
-
+---
+*switch statement*\
 Structure:
 ```cs
 switch(expression)
@@ -519,11 +518,102 @@ adding interations
 - Each case must be unique
 - First "true" will get executes (top to bottom)
 - Default can be placed wherever we cant, always evaluated last
+---
+
+*Iterations*
+- Continue exexuting a task (looping)
+- Often used in comination with a counter
+- Ask inout until stop is reached
+- Keep reading files from disk
+
+Loop Options in C#:
+- `while`
+- `do-while`
+- `for`
+
+A while loop:
+- Condition is tested before the loop runs
+- Statement will get execuutes as long as the expression is true
+- Braces are required if more than one statement must be executes
+- We can create infite moops!
+```cs
+while (Boolean expression)
+{
+    //statements
+}
+
+//An exemple of a nested while loop
+int i = 0;
+int j = 0;
+
+while (i < 10)
+{
+    while(j<10)
+    {
+        Console.WriteLine("i:" + i + "  j:"+ j);
+    }
+    j=0;
+    i++;
+}
+//Output:
+// 100 lines
+// i:0 j:0
+// i:0 j:1
+// i:0 j:2
+// ...
+// i:0 j:9
+// i:1 j:0
+// i:1 j:1
+// i:1 j:2
+// ...
+// i:9 j:8
+// i:9 j:9
+
+//An infinite loop
+while(true)
+{
+    Console.WriteLine(DateTime.Now);
+}
+```
+---
+A do-while loop:
+- The statement is executes at least once
+
+Structure:
+```cs
+do {
+    //statements
+}
+while(Boolean expression)
+```
+---
+A for loop:
+- less fragile
+
+Structure:
+```cs
+for(initiatization;Bollean;iterator)
+{
+    //statements
+}`
+//The 'continue;' allows us to go back to the start of the loop and continue the iteraction
+//We can add statements that will only be executes on a condition is met
+//The opposite of 'break' I can think
+//An exemple:
+Console.WriteLine("Enter a value: ");
+int max = int.Parse(Console.ReadLine());
+
+for(int i =0;i < max;i++)
+{
+    if(i==5){
+        Console.WriteLine("Bingo" + i +" was found!")
+        continue;
+    }
+    Console.WriteLine(i);
+}
 
 
-```cs
 ```
-```cs
-```
+#### 
 ```cs
 ```
