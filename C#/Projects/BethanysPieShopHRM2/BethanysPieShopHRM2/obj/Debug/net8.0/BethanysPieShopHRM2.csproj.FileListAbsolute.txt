@@ -1,0 +1,15 @@
+D:\Code\Learn\C#\Projects\BethanysPieShopHRM2\BethanysPieShopHRM2\obj\Debug\net8.0\BethanysPieShopHRM2.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code\Learn\C#\Projects\BethanysPieShopHRM2\BethanysPieShopHRM2\obj\Debug\net8.0\BethanysPieShopHRM2.AssemblyInfoInputs.cache
+D:\Code\Learn\C#\Projects\BethanysPieShopHRM2\BethanysPieShopHRM2\obj\Debug\net8.0\BethanysPieShopHRM2.AssemblyInfo.cs
+D:\Code\Learn\C#\Projects\BethanysPieShopHRM2\BethanysPieShopHRM2\obj\Debug\net8.0\BethanysPieShopHRM2.csproj.CoreCompileInputs.cache
+D:\Code\Learn\C#\Projects\BethanysPieShopHRM2\BethanysPieShopHRM2\obj\Debug\net8.0\BethanysPieShopHRM2.sourcelink.json
+D:\Code\Learn\C#\Projects\BethanysPieShopHRM2\BethanysPieShopHRM2\bin\Debug\net8.0\BethanysPieShopHRM2.exe
+D:\Code\Learn\C#\Projects\BethanysPieShopHRM2\BethanysPieShopHRM2\bin\Debug\net8.0\BethanysPieShopHRM2.deps.json
+D:\Code\Learn\C#\Projects\BethanysPieShopHRM2\BethanysPieShopHRM2\bin\Debug\net8.0\BethanysPieShopHRM2.runtimeconfig.json
+D:\Code\Learn\C#\Projects\BethanysPieShopHRM2\BethanysPieShopHRM2\bin\Debug\net8.0\BethanysPieShopHRM2.dll
+D:\Code\Learn\C#\Projects\BethanysPieShopHRM2\BethanysPieShopHRM2\bin\Debug\net8.0\BethanysPieShopHRM2.pdb
+D:\Code\Learn\C#\Projects\BethanysPieShopHRM2\BethanysPieShopHRM2\obj\Debug\net8.0\BethanysPieShopHRM2.dll
+D:\Code\Learn\C#\Projects\BethanysPieShopHRM2\BethanysPieShopHRM2\obj\Debug\net8.0\refint\BethanysPieShopHRM2.dll
+D:\Code\Learn\C#\Projects\BethanysPieShopHRM2\BethanysPieShopHRM2\obj\Debug\net8.0\BethanysPieShopHRM2.pdb
+D:\Code\Learn\C#\Projects\BethanysPieShopHRM2\BethanysPieShopHRM2\obj\Debug\net8.0\BethanysPieShopHRM2.genruntimeconfig.cache
+D:\Code\Learn\C#\Projects\BethanysPieShopHRM2\BethanysPieShopHRM2\obj\Debug\net8.0\ref\BethanysPieShopHRM2.dll

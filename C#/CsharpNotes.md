@@ -973,4 +973,253 @@ if (bool.TryParse(enteredText, out bool b))// Input, Output
     Console.WriteLine($"The value is {b}")
 }
 ```
-#### 
+#### Creating a Class and Objects
+
+Typical models ( used several times)
+- Employee
+- Customer
+- Message
+- Transaction
+
+Custom Types
+- Class
+- Struct
+- Record
+
+Classes in C#
+- Blueprint of an object
+- Denifes data and functionality to work on its data
+- Created using class keyword
+- Foundation of OO (Object-Oriented)
+
+The Class Template:
+```cs
+public class MyClass // public access mosdifier
+{
+    public int a;
+    public string b;
+
+    public void MtMethod()
+    {
+        Console.WriteLine("Hello world");
+    }
+}
+```
+Contents of a Class
+- Fields - Class level variables that contain data
+- Methods - A functionality that will work on the data, perform actions a change in state
+- Properties
+- Events
+
+*Creating the Employee Class*
+What defines an employee:
+- Indentity: Name
+- Attributes: Age, Wage
+- Behaviours: Get paid, Perfom work
+```cs
+public class Employee
+{
+    public string firstName;
+    public int age;
+
+    public void PerformWork
+    {
+        // method code goes here
+    }
+}
+```
+Access Modifiers
+- `public` - available outside of the Class
+- `private` - only accessible whit in the Class
+- `protected` - available for the Class and it's inheritors
+
+Demo:
+- Create a new application, my case Console type
+- Name it BethanysPieShopHRM2
+- Add a new Class named Employee.cs
+
+Exemple:
+```cs
+//Fields
+public string firstName;
+public string lastName;
+public string email;
+
+public int numberOfHoursWorked;
+public double wage;
+public double hourlyRate;
+
+public DateTime birthDay;
+
+const int minimalHoursWorkedUnit = 1;
+
+//Methods
+public void PerformWork()
+{
+    PerformWork(minimalHoursWorkedUnit);
+    //numberOfHoursWorked++;
+    //Console.WriteLine($"{firstName} {lastName} has worked for{numberOfHoursWorked} hour(s)!");
+}
+
+public void PerformWork(int numberOfHours)
+{
+    numberOfHoursWorked += numberOfHours;
+    Console.WriteLine($"{firstName} {lastName} has worked for{numberOfHours} hour(s)!");
+}
+
+public double ReceiveWage(bool resetHours = true)
+{
+    wage = numberOfHoursWorked * hourlyRate;
+
+    Console.WriteLine($"{firstName} {lastName} has received a wafe of {wage} for {numberOfHoursWorked} hour(s) of work.");
+    if (resetHours)
+        numberOfHoursWorked = 0;
+    return wage;
+}
+
+public void DisplayEmployeeDetails()
+{
+    Console.WriteLine($"\nFirst name: \t{firstName}\nLast name: \t{lastName}\nEmail:  \t{email}\nBirthday: \t{birthDay.ToShortDateString()}\n");
+}
+
+```
+---
+Using Objects
+
+We can picture a Class as a blueprint, where the color it's a field. An Object would be a copy of the blueprint with a different color.
+```
+Class
+    |----Object1
+    |    Color:orange
+    |----Object2
+    |    Color:blue
+    |----Object3
+    |    Color:green
+```
+Creating a New Object
+```cs
+Employee employee = new Employee();
+```
+|Left side|Rigth side|
+|---|---|
+|`Employee employee = new Employee();`|
+|Employee employee|new Employee();|
+| `=` Assignment operator|
+|Create a variable: Variable type Varaible name|new Object of Class Employee()|
+
+Constructors
+- called when instatiating an obkect happens
+- Default or custom
+- Used to set initial valuesss
+
+Adding a Constructor with Parameters
+```cs
+public class Employee
+{
+    public string fristName;
+    public int age;
+
+    //Doesn't have a return clause, and same name as the Class name
+    public Employee(string name, int ageValue) //Paramenters not required
+    {
+        firstName = name; //Initial values for the fields
+        age = ageValue;
+    }
+}
+
+//Here the "Bethnay", 35 are the Constructor arguments
+Employee employee = new Employee("Bethnay", 35);
+//Using new keyword to generate an object of the Employee type
+```
+The Default Constructor
+```cs
+public class Employee{
+    public Employee()
+    {}
+}
+//Created when not define no other constructors
+```
+Shorthand to Create an Instance
+```cs
+Employee employee = new ("Bethany",35);
+```
+Call methods
+|Code|Meaning|
+|---|---|
+|`Employee employee = new Employee();`| Instantiating the object|
+|`employee.PerfomWork();`|Invoking a method|
+|`employee.firstName = "Bethany";`| Changing a field|
+|`int wage = employee.RecieveWage();`|Returning a value from method|
+---
+Using Primary Constructors
+```cs
+/* A new way to write a constructor where we don't need to specify
+*  and variables are already available
+*/
+public class Employee (string name, int ageValue)
+{
+}
+```
+
+Demo
+```cs
+//Employee.cs
+
+//Our constructors
+
+//An exemple of an overloaded constructor
+//we need to add the ": this" keyword to make a call to the "original"
+//and passing it the values
+public Employee(string first, string last, string em, DateTime bd) : this(first,last, em, bd,0)// here a zero is passed since we don't have a value for the rate
+{
+}
+
+public Employee(string first, string last, string em, DateTime bd, double rate)
+{
+    firstName = first;
+    lastName = last;
+    email = em;
+    birthDay = bd;
+    hourlyRate = rate;
+}
+
+//Program.cs
+// This is namespace, a group of Classes, need to be called
+using BethanysPieShopHRM2;
+
+Console.WriteLine("Creating an employee");
+Console.WriteLine("--------------------\n");
+
+Employee bethany = new Employee("Bethany","Smith","bethany@snowball.be", new DateTime(1979,1,16),25);
+
+bethany.DisplayEmployeeDetails();
+
+bethany.PerformWork();
+bethany.PerformWork();
+bethany.PerformWork(5);
+bethany.PerformWork();
+
+double receivedWageBethany = bethany.ReceiveWage(true);
+Console.WriteLine($"Wage paid (message from Program): {receivedWageBethany}");
+
+//Output:
+/*
+Creating an employee
+--------------------
+
+
+First name:     Bethany
+Last name:      Smith
+Email:          bethany@snowball.be
+Birthday:       16-01-79
+
+Bethany Smith has worked for1 hour(s)!
+Bethany Smith has worked for1 hour(s)!
+Bethany Smith has worked for5 hour(s)!
+Bethany Smith has worked for1 hour(s)!
+Bethany Smith has received a wafe of 200 for 8 hour(s) of work.
+Wage paid (message from Program): 200
+*/
+```
+```cs
+```
