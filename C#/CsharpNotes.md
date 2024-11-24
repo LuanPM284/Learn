@@ -1440,4 +1440,151 @@ namespace BethanysPieShopHRM2
     }
 }
 ```
-#### 
+#### More with Classes and Custom Types
+
+**Grouping Classes in Namespaces**
+
+Namespaces
+- Keep class names separate
+- Used throughout .NET
+- Organize out own classes in custom namespaces
+- Make namespace available through `using` directive
+```cs
+namespace BethanysPieShop.HR // just a string; Rootnamespace.Custom_Namedspace
+{
+    public class Employee
+    { }
+}
+
+//File)csoped Namespaces
+namespace BethanysPieShop.HR; //All code on this file is part of the namespace
+
+public class Employee
+{ }
+```
+Working with namespaces
+```cs
+//If we create a folder inside out project and add a new class, 
+// by convetion it takes the name concatenated
+
+//When calling a new custom type we can do by their name or fully qualify the type
+using Customer
+Customer... ;
+
+// OR
+
+BethanysPieShopHRM2.Accounting.Customer customer = new BethanysPieShopHRM2.Accounting.Customer();
+```
+---
+Static Data
+- It's defined on the class level and not on the obj level, shared with all objs
+- So I can use it without instantiating an object of this class
+- Static methods can only work with static Data
+```cs
+public class Emplopyee
+{
+    //Satic field
+    public static double bonusPercentage = 0.15;
+    //Static method
+    public static void IncreaseBonusPercentage(double newPercentage)
+    {
+        bonusPercentage = newPercentage;
+    }
+}
+
+//exemple
+static void Main(string[] args){ // on main file, program.cs
+    Employee.IncreaseBonusPercentage(0.2); //Note the class name, not the object
+
+    Employee.taxRate = 0.02; // It will change the value for all once it passes this point on code
+
+}
+```
+A `region` is a way to collapse code:
+```cs
+#region Name of the region
+
+Code
+Code
+Code
+#endregion
+```
+By clicking F12 when cursor over method it brings us to their definition
+
+---
+Working with null
+(Stack --- Heap)
+```cs
+Employee employee;
+//employee is null, variable created on the stack but not instantiated
+employee = new Emplopyee(); //now a new obj is created on the Heap 
+// and the employee refrence is pointed to the actual obj on the heap
+
+//When obj not created we get an error
+Employee employee = null;
+employee.PerformWork();//runtime error: NullReferenceException
+
+//We can also break the reference to the obj by declaring the variable null
+employee = null;
+```
+Nullable Value Type
+- represents the actually underligning type + the null
+- if we don't have a value but need an int type, int nullable value type
+```cs
+int? a = 10;
+int? b = null;
+if (b.hasValue)//check
+{
+    Console.WriteLine("We have a balue");
+}
+```
+When We use Null values
+- We can add `.Value` ather the variable to get the value of the nullable
+- OR 
+- we can use null coalescing operator
+```cs
+hourlyRate = rate;
+hourlyRate = rate ?? 10; //If rate is null use the right hand-side
+```
+---
+Garbage Collection
+- When objects are created but lose their connections or references they stay on the heap memory
+- Garbage Collctor will remove those objects that do not run on the application
+- Cleaning up unreachable objects
+
+Visual Studio - Diagnostic Tool
+
+```cs
+#region 
+// Heavy memory code
+// Heavy memory code
+// Heavy memory code
+#endregion 
+
+GC.Collect(); // Will force a clear
+```
+---
+Using a Class from an External Library
+- .NET Class Lib
+    - Console class
+- Custom libs
+    - WageCalculation class
+- Out application
+    - using NameSpace;
+
+Visual Studio - 
+Project - RigthClick -> Add -> Project Reference... -> Browse -> FilePath to the .dll
+Under Dependencies we will add an extra node
+
+To rewrite a same value we can do CTRL + R CTRL + R and apply
+
+---
+C# Records
+```cs
+```
+```cs
+```
+```cs
+```
+```cs
+```

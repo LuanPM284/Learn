@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BethanysPieShopHRM2
+namespace BethanysPieShopHRM2.HR
 {
     internal class Employee
     {
@@ -26,7 +26,7 @@ namespace BethanysPieShopHRM2
         //An exemple of an overloaded constructor
         //we need to add the ": this" keyword to make a call to the "original"
         //and passing it the values
-        public Employee(string first, string last, string em, DateTime bd) : this(first,last, em, bd,0)// here a zero is passed since we don't have a value for the rate
+        public Employee(string first, string last, string em, DateTime bd) : this(first, last, em, bd, 0)// here a zero is passed since we don't have a value for the rate
         {
         }
 

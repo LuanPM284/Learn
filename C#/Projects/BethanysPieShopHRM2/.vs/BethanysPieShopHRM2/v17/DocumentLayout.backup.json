@@ -3,12 +3,32 @@
   "WorkspaceRootPath": "D:\\Code\\Learn\\C#\\Projects\\BethanysPieShopHRM2\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{6912E8BA-E0F5-4AA5-AE36-AF98C24999AF}|BethanysPieShopHRM2\\BethanysPieShopHRM2.csproj|d:\\code\\learn\\c#\\projects\\bethanyspieshophrm2\\bethanyspieshophrm2\\hr\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6912E8BA-E0F5-4AA5-AE36-AF98C24999AF}|BethanysPieShopHRM2\\BethanysPieShopHRM2.csproj|solutionrelative:bethanyspieshophrm2\\hr\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6912E8BA-E0F5-4AA5-AE36-AF98C24999AF}|BethanysPieShopHRM2\\BethanysPieShopHRM2.csproj|d:\\code\\learn\\c#\\projects\\bethanyspieshophrm2\\bethanyspieshophrm2\\accounting\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6912E8BA-E0F5-4AA5-AE36-AF98C24999AF}|BethanysPieShopHRM2\\BethanysPieShopHRM2.csproj|solutionrelative:bethanyspieshophrm2\\accounting\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6912E8BA-E0F5-4AA5-AE36-AF98C24999AF}|BethanysPieShopHRM2\\BethanysPieShopHRM2.csproj|d:\\code\\learn\\c#\\projects\\bethanyspieshophrm2\\bethanyspieshophrm2\\accounting\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6912E8BA-E0F5-4AA5-AE36-AF98C24999AF}|BethanysPieShopHRM2\\BethanysPieShopHRM2.csproj|solutionrelative:bethanyspieshophrm2\\accounting\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6912E8BA-E0F5-4AA5-AE36-AF98C24999AF}|BethanysPieShopHRM2\\BethanysPieShopHRM2.csproj|d:\\code\\learn\\c#\\projects\\bethanyspieshophrm2\\bethanyspieshophrm2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6912E8BA-E0F5-4AA5-AE36-AF98C24999AF}|BethanysPieShopHRM2\\BethanysPieShopHRM2.csproj|solutionrelative:bethanyspieshophrm2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6912E8BA-E0F5-4AA5-AE36-AF98C24999AF}|BethanysPieShopHRM2\\BethanysPieShopHRM2.csproj|d:\\code\\learn\\c#\\projects\\bethanyspieshophrm2\\bethanyspieshophrm2\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6912E8BA-E0F5-4AA5-AE36-AF98C24999AF}|BethanysPieShopHRM2\\BethanysPieShopHRM2.csproj|solutionrelative:bethanyspieshophrm2\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6912E8BA-E0F5-4AA5-AE36-AF98C24999AF}|BethanysPieShopHRM2\\BethanysPieShopHRM2.csproj|d:\\code\\learn\\c#\\projects\\bethanyspieshophrm2\\bethanyspieshophrm2\\bethanyspieshophrm2.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{6912E8BA-E0F5-4AA5-AE36-AF98C24999AF}|BethanysPieShopHRM2\\BethanysPieShopHRM2.csproj|solutionrelative:bethanyspieshophrm2\\bethanyspieshophrm2.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6912E8BA-E0F5-4AA5-AE36-AF98C24999AF}|BethanysPieShopHRM2\\BethanysPieShopHRM2.csproj|d:\\code\\learn\\c#\\projects\\bethanyspieshophrm2\\bethanyspieshophrm2\\hr\\worktask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6912E8BA-E0F5-4AA5-AE36-AF98C24999AF}|BethanysPieShopHRM2\\BethanysPieShopHRM2.csproj|solutionrelative:bethanyspieshophrm2\\hr\\worktask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6912E8BA-E0F5-4AA5-AE36-AF98C24999AF}|BethanysPieShopHRM2\\BethanysPieShopHRM2.csproj|d:\\code\\learn\\c#\\projects\\bethanyspieshophrm2\\bethanyspieshophrm2\\hr\\employeetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6912E8BA-E0F5-4AA5-AE36-AF98C24999AF}|BethanysPieShopHRM2\\BethanysPieShopHRM2.csproj|solutionrelative:bethanyspieshophrm2\\hr\\employeetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +38,97 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Employee.cs",
-              "DocumentMoniker": "D:\\Code\\Learn\\C#\\Projects\\BethanysPieShopHRM2\\BethanysPieShopHRM2\\Employee.cs",
-              "RelativeDocumentMoniker": "BethanysPieShopHRM2\\Employee.cs",
-              "ToolTip": "D:\\Code\\Learn\\C#\\Projects\\BethanysPieShopHRM2\\BethanysPieShopHRM2\\Employee.cs*",
-              "RelativeToolTip": "BethanysPieShopHRM2\\Employee.cs*",
-              "ViewState": "AgIAADIAAAAAAAAAAAAiwDYAAAAAAAAAAAAAAA==",
+              "DocumentMoniker": "D:\\Code\\Learn\\C#\\Projects\\BethanysPieShopHRM2\\BethanysPieShopHRM2\\HR\\Employee.cs",
+              "RelativeDocumentMoniker": "BethanysPieShopHRM2\\HR\\Employee.cs",
+              "ToolTip": "D:\\Code\\Learn\\C#\\Projects\\BethanysPieShopHRM2\\BethanysPieShopHRM2\\HR\\Employee.cs",
+              "RelativeToolTip": "BethanysPieShopHRM2\\HR\\Employee.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBUAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-22T15:19:56.37Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "Customer.cs",
+              "DocumentMoniker": "D:\\Code\\Learn\\C#\\Projects\\BethanysPieShopHRM2\\BethanysPieShopHRM2\\Accounting\\Customer.cs",
+              "RelativeDocumentMoniker": "BethanysPieShopHRM2\\Accounting\\Customer.cs",
+              "ToolTip": "D:\\Code\\Learn\\C#\\Projects\\BethanysPieShopHRM2\\BethanysPieShopHRM2\\Accounting\\Customer.cs",
+              "RelativeToolTip": "BethanysPieShopHRM2\\Accounting\\Customer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-24T19:16:28.033Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Account.cs",
+              "DocumentMoniker": "D:\\Code\\Learn\\C#\\Projects\\BethanysPieShopHRM2\\BethanysPieShopHRM2\\Accounting\\Account.cs",
+              "RelativeDocumentMoniker": "BethanysPieShopHRM2\\Accounting\\Account.cs",
+              "ToolTip": "D:\\Code\\Learn\\C#\\Projects\\BethanysPieShopHRM2\\BethanysPieShopHRM2\\Accounting\\Account.cs",
+              "RelativeToolTip": "BethanysPieShopHRM2\\Accounting\\Account.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-24T19:15:57.776Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BethanysPieShopHRM2",
+              "DocumentMoniker": "D:\\Code\\Learn\\C#\\Projects\\BethanysPieShopHRM2\\BethanysPieShopHRM2\\BethanysPieShopHRM2.csproj",
+              "RelativeDocumentMoniker": "BethanysPieShopHRM2\\BethanysPieShopHRM2.csproj",
+              "ToolTip": "D:\\Code\\Learn\\C#\\Projects\\BethanysPieShopHRM2\\BethanysPieShopHRM2\\BethanysPieShopHRM2.csproj",
+              "RelativeToolTip": "BethanysPieShopHRM2\\BethanysPieShopHRM2.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-11-24T19:15:21.013Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Code\\Learn\\C#\\Projects\\BethanysPieShopHRM2\\BethanysPieShopHRM2\\Program.cs",
               "RelativeDocumentMoniker": "BethanysPieShopHRM2\\Program.cs",
               "ToolTip": "D:\\Code\\Learn\\C#\\Projects\\BethanysPieShopHRM2\\BethanysPieShopHRM2\\Program.cs",
               "RelativeToolTip": "BethanysPieShopHRM2\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-22T15:18:56.522Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EmployeeType.cs",
+              "DocumentMoniker": "D:\\Code\\Learn\\C#\\Projects\\BethanysPieShopHRM2\\BethanysPieShopHRM2\\HR\\EmployeeType.cs",
+              "RelativeDocumentMoniker": "BethanysPieShopHRM2\\HR\\EmployeeType.cs",
+              "ToolTip": "D:\\Code\\Learn\\C#\\Projects\\BethanysPieShopHRM2\\BethanysPieShopHRM2\\HR\\EmployeeType.cs",
+              "RelativeToolTip": "BethanysPieShopHRM2\\HR\\EmployeeType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-24T19:11:09.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "WorkTask.cs",
+              "DocumentMoniker": "D:\\Code\\Learn\\C#\\Projects\\BethanysPieShopHRM2\\BethanysPieShopHRM2\\HR\\WorkTask.cs",
+              "RelativeDocumentMoniker": "BethanysPieShopHRM2\\HR\\WorkTask.cs",
+              "ToolTip": "D:\\Code\\Learn\\C#\\Projects\\BethanysPieShopHRM2\\BethanysPieShopHRM2\\HR\\WorkTask.cs",
+              "RelativeToolTip": "BethanysPieShopHRM2\\HR\\WorkTask.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-24T19:10:51.207Z",
               "EditorCaption": ""
             }
           ]

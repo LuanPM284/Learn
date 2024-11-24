@@ -1,5 +1,6 @@
 ﻿// This is namespace, a group of Classes, need to be called
-using BethanysPieShopHRM2;
+//using BethanysPieShopHRM2;
+using BethanysPieShopHRM2.HR;
 
 Console.WriteLine("Creating an employee");
 Console.WriteLine("--------------------\n");
