@@ -1406,8 +1406,8 @@ namespace BethanysPieShopHRM2
 ```
 ---
 Working with Struct
-- Represents a custom data structure
 - Value type
+- Represents a custom data structure
 - Can be new'ed
 - Can contain methods and other members
 ```cs
@@ -1579,12 +1579,59 @@ Under Dependencies we will add an extra node
 To rewrite a same value we can do CTRL + R CTRL + R and apply
 
 ---
-C# Records
+C# Records (C#12)
+- New reference type
+- Can replace class
+- Aimed at "just" containing data, can contain other members though
+- Come with additional functionality built-in (generated)
 ```cs
+public record Account;
+public record class Account;
+public record struct Account; //A value type
+
+//Primary Constructors
+public record Account(string AccountNumber);//Positonal record
+
+Account newAccount = new("123-456");
 ```
+Why records?
+- Passing around "just" data
+- Used for data that shouldnt be changed after creation
+
+- Immutability
+- Value-based equality
+- Concise
+
 ```cs
+Employee emp1 = new Employee("Bethany");
+emp1.FirstName = "Gill"; //error
+
+//when == we check for same reference when objects
+//for classes we get a false, for records we get a true
+//way to verify if two objs have a same value
 ```
+We change the class Acccount to a Record, we can since we "only" store data
+
+Exe:
 ```cs
+//Normal record
+    public record Account
+    {
+       private string accountNumber;
+
+       public string AccountNumber
+       {
+           get { return accountNumber; }
+           set
+           {
+               accountNumber = value;
+           }
+       }
+    }
+
+    //Positional record
+    public record Account(string AccountNumber);    
 ```
+####
 ```cs
 ```
