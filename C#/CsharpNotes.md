@@ -1632,6 +1632,109 @@ Exe:
     //Positional record
     public record Account(string AccountNumber);    
 ```
-####
+#### Arrays and Lists
+Understanding Arrays
+- Use most when amount of variables unknownish
+
+Working with Lits of Data
+- Arrays
+- Collections
+
+Arrays in C#
+- Data structure to store multiple variables
+- All variables must have the same type (can be object)
+- Accessed through use of index (start 0)
 ```cs
+// Type of array    Variable Name
+int[] allEmployeeIds;
+
+DateTime[] startDates;
 ```
+Instantiating the Arrays
+- a reference type = stored on the heap
+- Creating happens upon using new
+- Size set upon cr- Arrays are zero-based
+```cs
+int[] allEmployeeIds = new int[4];// size of the array
+// here all employees are just a variable that point to the array
+
+//Determining the Array Size at Runtime
+int size = int.Parse(Console.ReadlLine());
+int[] employeeIds = new int[size];
+```
+Populating the Array
+```cs
+int[] allEmployeeIds = new int[4] {11,44,179,161};
+int[] allEmployeeIds = new int[4] {11,44,179};//CompilerError; wrong size
+int[] supportStaffIds = new int[] {11,44};
+// This is ok, since size is the same as paramenters passed
+```
+Accessing Element within the Array
+```cs
+allEmployeeIds[0] = 123;
+
+int firstEmployeeId = allEmployeeIds[0];
+int secondEmployeeId = allEmployeeIds[1];
+
+allEmployeeIds[2] = 33; //ok, still inside the size
+allEmployeeIds[7] = 33; //RuntimeException; index doesnt ecist
+```
+`foreach` loop & `Random()` method
+-  loops over all the element in a collection 
+```cs
+//An array of Employee type obj
+Employee[] employees = new Employee[7];
+employees[0] = bethany;
+employees[1] = george;
+//...
+
+// e here represents a new employee in the array
+foreach(Employee e in employees )
+{
+    e.DisplayEmployeeDetails();
+    var numberOfHoursWorked = new Random().Next(25); // random num between 0 and 25
+    e.PerfomWork§(numberOfHoursWorked);
+    e.ReceiveWage();
+}
+```
+The Array Base Class - a reference type so goes to the heap, no real place
+- `CopyTo();` method to copy arrays
+- `Sort();` method to sort the values of an int type
+- Reverse() method to reverse order of elements
+- `Length` property gives number of elements
+
+Demo:
+```cs
+ArraySort(employeeIds);
+
+int[] employeeIdsCopy = new int[length];
+
+employeeIds.CopyTo(employeeIdsCopy,0) // copy starting from zero element here
+```
+Working with Collections
+- List
+```cs
+//Creating a List
+List<int> employeeIds = new List<int>(); //Type parameter
+
+//We can add and remove items, not like Arrays
+employeeIds.Add(1);
+employeeIds.Add(99);
+employeeIds.Add(458);
+
+employeeIds.Remove(1);
+
+int selectedId = employeeIds[2];
+
+int length = employeeIds.Count;
+
+car employeeIdsArray = employeeIds.ToArray();
+
+employeeIds.Contains(...);// true/false
+
+employeeIds.Clear();// clears the list
+
+employees.Insert(_index, _element);
+```
+####
+
