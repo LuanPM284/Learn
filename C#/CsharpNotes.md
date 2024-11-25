@@ -1147,7 +1147,7 @@ Call methods
 |Code|Meaning|
 |---|---|
 |`Employee employee = new Employee();`| Instantiating the object|
-|`employee.PerfomWork();`|Invoking a method|
+|`employee.PerformWork();`|Invoking a method|
 |`employee.firstName = "Bethany";`| Changing a field|
 |`int wage = employee.RecieveWage();`|Returning a value from method|
 ---
@@ -1168,7 +1168,7 @@ Demo
 //Our constructors
 
 //An exemple of an overloaded constructor
-//we need to add the ": this" keyword to make a call to the "original"
+//we need to add the ": this" keyword to make a call to the "original", the parent
 //and passing it the values
 public Employee(string first, string last, string em, DateTime bd) : this(first,last, em, bd,0)// here a zero is passed since we don't have a value for the rate
 {
@@ -1693,7 +1693,7 @@ foreach(Employee e in employees )
 {
     e.DisplayEmployeeDetails();
     var numberOfHoursWorked = new Random().Next(25); // random num between 0 and 25
-    e.PerfomWork§(numberOfHoursWorked);
+    e.PerformWork§(numberOfHoursWorked);
     e.ReceiveWage();
 }
 ```
@@ -1736,5 +1736,320 @@ employeeIds.Clear();// clears the list
 
 employees.Insert(_index, _element);
 ```
-####
+#### Fundamentals of Object-orientation
 
+Object-oriented Programming in C#
+
+Structure:
+- Classes
+- Objects
+- Methods
+- Properties
+
+The Four Pillars of OO
+- Encapsulation
+    - Containing information inside object
+    - Only centain information is exposed
+    - Hides internal implementaion and data
+    - Avoid data corruption
+    - Private & public
+- Abstraction
+    - Abstract representation of program
+    - Only mechanisms useful for other objects are revealed
+    - Implementation is hidden
+    - Making changes becomes easier
+- Inheritance
+    - Classes can reuse functionality from others
+    - Relation between classes
+    - Lower development time because of reusability
+- Polymorphism
+    - Share behaviour but van be in more than one form
+    - Child can be ised like its parent
+    - Correct method will be used based on execution
+
+---
+In order to change private fiels from a class we need a method that can get long with the the number of fields.
+We can instead use Properties, that will enable the interaction with private fields. Allows ust to expose data but without showing the behind logic.
+
+**Encapsulation**
+
+Introducing Properties
+```cs
+public class Employee
+{
+    private int age; // private age field, only available inside the class
+    public int age // public age property, notice same type
+    {
+        get { return age; } // access the value and logic
+        set{
+            age = value; // new keyword 'value'
+        }
+    }
+}
+```
+C# Properties
+- Wrap data (fields) of a class <!-- Access only the allowed data-->
+- Hide implementation
+- Define get and set implementation
+<!-- Convention for methods, PascalCase it is != than camelCase -->
+
+Using Properties
+```cs
+Employee employee = new Employee(); // Instantiation the object
+
+employee.FirstName = "Bethany" // Setting a value through a property
+
+int empFirstName = employee.FirstName; // Getting the valuue through a property
+```
+Demo:
+```cs
+// Employee.cs
+// public string firstName; // Always access and can change outside
+private string firstName; // No access and can't change outside
+
+public string FirstName
+get
+{
+    return firstName;
+}
+set
+{
+    firstName = value;
+}
+
+//Program.cs
+bethany.firsName = "John"; // This works when I have a public field
+// Set to private
+bethany.firsName = "John"; // Error
+
+bethany.FirsName = "John"; // I use the property, to I set{} the value and inside property goes to firstName
+
+string fn = bethany.FirsName; // Property but the get{} part, it will return the value stored on firstName by the set{}
+
+// This is the only allowed interaction with the object, no data was modified in the class
+
+
+```
+Properties are to access data that are encapsulated inside the Class
+
+I can also stop changes from outside by doing a `private` on the `set`, that way no one can set a value from the outside of the class. But I can still get the value, since `get` is not `private`.
+```cs
+private double wage;
+
+public double Wage
+{
+    get{ return wage}
+    private set // HERE
+    {
+        wage = value
+    }
+}
+```
+It's a good idea to change the constructor to use properties instead of fields.
+
+```cs
+// The initial Contructor
+public Employee (string first, string last, string em, DateTime db, double? rate, EmployeeType empType)
+{
+    firstName = first;
+    lastName = last;
+    email = em;
+    birthDay = bd;
+    hourlyRate = rate ?? 10;
+    employeeType = empType;
+}
+
+// After Properties
+public Employee (string firstName, string lastName, string emaim, DateTime birthDay, double? hourlyRate, EmployeeType employeeType)
+{
+    FirstName = firsName;
+    LastName = lastName;
+    Email = email;
+    BirthDay = birthDay;
+    HourlyRate = hourlyRate ?? 10;
+    EmployeeType = employeeType;
+}
+
+// And the rest of the code, where before we had fields we use the properties
+// stopping anyway to change it from the outside, but still readable
+
+// Encapsulating the Data
+```
+---
+**Inheritance**
+
+Using Inheritance in C#
+- Class gets data and functionality from parent
+- Parent (or base) and derived class
+- Reuse code
+- Easier to maintain
+- Can be one or more levels deep
+
+Creating a Base and a Derived Type
+```cs
+//Structure
+public class BaseClass
+{
+
+}
+public class DerivedClass: BaseClass
+{
+
+}
+
+public class Employee
+{
+    public string name;
+    public void PerformWork()
+    {
+
+    }
+}
+
+public class Manager: Employee
+{
+    public void DisplayManagerData()
+    {
+        Console.WriteLine(name);// name is defined on parent class but can be used
+    }
+}
+```
+Revisiting Access Modifiers
+- public - can be accessed by DerivedClass and others
+- private - cannot be accessed
+- protected - can be accessed ONLY by inherited classes
+
+```cs
+public class Employee
+{
+    private string name;// just for the exemple, do not make twice same name
+
+    protected string name;
+
+    public void PerformWork()
+    {
+
+    }
+}
+
+public class Manager: Employee
+{
+    public void DisplayData()
+    {
+        Console.WriteLine(name);// error for private
+
+        Console.WriteLine(name);// ok for protected
+    }
+}
+```
+We will need a Contructor when creating a class. We use base: after parentheses to define the accepted values from the parent class.
+
+```cs
+//Manager.cs
+namespace BethanysPieShopHRM2.HR
+{
+    internal class Manager: Employee
+    {
+        public Manager(string firstName, string lastName, string emaim, DateTime birthDay, double? hourlyRate): base(firstName, lastName, email, birthDay, hourlyRate)
+        {
+
+        }
+        // a method unique to Manager
+        public void AttendManagementMeeting()
+        {
+            NumberOfHoursWorked += 10;// need to make sure the field is protected and not private
+            Console.WriteLine(...)
+        }
+    }
+}
+
+//Program.cs
+
+Manager mary = new Manager("Mary", "Jones","maey@email.com", new DateTime(1965,1,16), 30);
+// OR
+// The "Is-A" Relation
+// - Manager -- Is A --> Employee
+Employee mary = new Manager("Mary", "Jones","maey@email.com", new DateTime(1965,1,16), 30);
+
+// The "Has-A" Relation - Compostion
+// nested properties, inside constrctors having custom types
+
+```
+---
+Polymorphism
+- Override a base class method with a new implementation
+- "Poly" & "morph" - many & change
+- Uses `virtual` and `override` keywords
+```cs
+// Employee
+public class Employee
+{
+    public virtual void PerformWork() // Allows a change for inheritants
+    { ... }
+}
+
+// Manager
+public class Manager: Employee
+{
+    public override void PerformWork() // This version is changed for the Manager only
+    { 
+        base.PerformWork(); // the base case will be used if we leave this
+        // Our version we delete the line above
+        // code
+        // code
+    }
+}
+
+// ATTENTION to the base type that is called and the avaiable methods for it
+```
+---
+Interfaces (a type)
+- Define a contract that must be implemented by classed that use it
+- Can't be instantiated, they are just contract there is no implementaion in the methods
+- Names start with an "I" - convention
+- Useful to make sure all available methods can be used( have implementaion) and can be polymorphed
+- Recommended to use as the type when creating a new object
+```cs
+//Structure
+public interface IEmployee
+{
+    void PerformWork();
+    int ReceiveWage();
+}
+```
+Implementing an Interface
+```cs
+public void Manager: IEmployee
+{
+    public void PerformWork()
+    {
+        ...
+    }
+    public int ReceiveWage()
+    {
+        ...
+    }
+}
+```
+Demo:
+```cs
+//IEmployee.cs
+internal interface IEmployee
+{
+    double ReceiveWage(bool resetHours = true);
+    void GiveBonus();
+    void PerformWork();
+    void PerformWork(int numberOfHours);
+    void DisplayEmployeeDetails();
+}
+
+//Employee.cs
+internal class EMployee: IEmployee
+{
+    ...
+}
+// All the methods have an implementation inside the Employee Class
+```
+#### 
+```cs
+```
