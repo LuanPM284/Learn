@@ -2351,4 +2351,30 @@ finally
     //This will always execute
 }
 ```
-####
+#### Next Steps in C#
+- Object-orientation
+    - go in-dept 
+    - Design of a real system
+- Working with data in a Database
+    - connecting with a database locally or in the cloud
+    - ADO.NET or Entity Framework Core
+    - Querying or editing data
+- LING 
+    - Language-Integrated Querry Language
+-Async coding
+    - Avoid blocking the application while code runs
+    - external API use
+- Application Development
+    - Desktop
+        - WPF (Windows Presentation Foundation)
+        - WinForms
+    - Web
+        - ASP.NET Core
+        - MVC
+        - Razor Pages
+        - Blazor
+    - API
+        - ASP.NET Core
+    - Mobile
+        - Xamarin
+        - Maui
