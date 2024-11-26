@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BethanysPieShopHRM2.HR
 {
-    internal class Employee
+    public class Employee
     {
         //Fields
         public string firstName;

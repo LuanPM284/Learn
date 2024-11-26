@@ -2050,6 +2050,146 @@ internal class EMployee: IEmployee
 }
 // All the methods have an implementation inside the Employee Class
 ```
+#### Testing C# Code
+
+Debugger
+- Run in debug mode
+- Breakpoints
+- Stepping through the code
+
+Debugger Commands
+- F5: start debugging
+- F10: Step over
+- F11: Step Into
+- Shift + F11: Step out
+
+ON Debug mode, we can access several windows at the bottom of Visual Studio 2022.
+
+The autos window allows us to see the values of our variables and the objects for every step.
+
+We can also isolate a specific variable to watch it's change. RigthCLick and *Add Watch* -> Watch 1 window
+
+Output window - errors or exceptions
+
+---
+
+**Writing a Unit Test**
+
+Introducing Unit Tests
+- Code to test other code
+- Small components of the application
+- Validate value
+- Isolare part of the code
+
+Advantages of Unit Tests
+- Find bugs
+- Change wothout fear of breaking something
+- Improve quality
+- Documentation of the code
+
+Creating a Unit Test Project
+- We will need a separate project - xUnit Test Project, as a template
+
+For us to use out Test on our original code, we will need to create a reference to the Test .
+Add Project Reference
+
+Structure of a Unit Test
+- Arrange
+- Act
+- Assert
+
+exe:
+```cs
+public class EmployeeTests
+{
+    [Fact]
+    public void PerformWork_Adds_DefaultNumberOfHours_IfNoValueSpecified()
+    {
+        //Arrange
+        Employee employee = new  Employee(...);
+
+        //Act
+        employee.PerformWork();
+
+        //Assert
+        Assert.Equal(1, employee.NumberOfHoursWorked);
+    }
+}
+```
+Running Tests with Test Explorer - Test Explorer window
+
+Demo:
+```cs
+/**
+    We will crete an Unit Test for PerformWork() for this exemple.
+    On the solution folder, add a new project -> for C# -> xUnit Test Project framework
+    A good idea for the name is the same as the the original with a tests:  original.Tests
+
+    Once created we need to link the Tests with the project so we RigthClick on the dependencies
+    from Tests and add a Reference.
+
+    Make sure to name things correctly.
+*/
+
+//Unit test is nothing more than a method, make sure to keep a name that describes what the test will do
+
+// Before we can call a new object type Employee we need to make the class "public", since internal is only available for the said project. We can now write 'using BethanysPieShopHRM2.HR;
+
+
+internal class Employee 
+{...}
+// =>
+public class Employee
+{...}
+
+//UnitTest1.cs
+// Once we have written our test we can go on the tab Test and Run All Tests, if all is well written we should get green check marks
+
+using BethanysPieShopHRM2.HR;
+
+namespace BethanysPieShopHRM2.Tests
+{
+    public class EmployeeTests
+    {
+        [Fact]
+        public void PerformWork_Adds_NumberOfHours()
+        {
+            //Arrange
+            Employee employee = new Employee("Bethany", "Smith", "bethany@snowball.be", new DateTime(1979, 1, 16), 25);
+            // A new employee to test
+
+            int numberOfHours = 3;
+            //Act
+            employee.PerformWork(numberOfHours);
+            // Call the part we want to test
+
+            //Assert
+            Assert.Equal(numberOfHours, employee.numberOfHoursWorked);
+            // Check if the hours recieved are the same
+        }
+
+        [Fact]
+        public void PerformWork_Adds_NumberOfHours_IfNoValueSpecified()
+        {
+            //Arrange
+            Employee employee = new Employee("Bethany", "Smith", "bethany@snowball.be", new DateTime(1979, 1, 16), 25);
+
+            //Act
+            employee.PerformWork();
+
+            //Assert
+            Assert.Equal(1, employee.numberOfHoursWorked);
+            // Check if the correct value is passed by default
+        }
+    }
+}
+```
 #### 
+```cs
+```
+```cs
+```
+```cs
+```
 ```cs
 ```
