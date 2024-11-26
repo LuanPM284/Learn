@@ -2269,13 +2269,86 @@ internal static void SaveEmployees(List<Employee> employees)
 ```
 The `is` keyword can check if an object is the correct type. `if ( employee is Manager){...}`
 
----
+--- 
 #### Handling Exceptions
+Understanding Exceptions
+- Divide by 0
+- File not accessible
+- Incorrect permissions
+- Database unreachable
+- ...
+
+Using a try/catch Block
 ```cs
+try
+{
+    //code goes her
+}
+catch(Exception ex)
+{
+    //Here we can handle the exception
+    throw;
+}
 ```
+Add it where things can go wrong! Find more on the documentation.
+
+Inspectiing the Exepetion Details
+- Message
+- InnerException
+- StackTrace
+- HelpLink
+
 ```cs
+try
+{
+    string input = Consle.ReadLine();
+    int a = int.Parse(input);
+}
+catch(Exception ex)
+{
+    Console.WriteLine(ex.Message);
+    Console.WriteLine(ex.StackTrace);
+}
 ```
+Catching Several Types of Exceptions
 ```cs
+// We can write several like this
+try
+{
+    string input = Consle.ReadLine();
+    int a = int.Parse(input);
+    int b = 10 / a;
+}
+catch(FormatException fex)
+{
+    //Here wa can handle the exception
+}
+catch(DivideByZeroException dbzex)
+{
+    //Here wa can handle the exception
+}
+
+// Exceptions have an hierarchie, we can also just catch a general/base type
+catch(Exception ex)
+{
+    //This will be invoked if another type of exception occurs
+}
 ```
+Using `finally`
+- It will always execute, even if we end up on a `catch` block
+
 ```cs
+try
+{
+    //Code goes here
+}
+catch(Exception ex)
+{
+    //This will be invoked if another type of exception occurs
+}
+finally
+{
+    //This will always execute
+}
 ```
+####
