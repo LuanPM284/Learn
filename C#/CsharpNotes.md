@@ -2184,7 +2184,93 @@ namespace BethanysPieShopHRM2.Tests
     }
 }
 ```
-#### 
+#### Reading from and Writting to Files
+
+Setting up the application's structure - can find m13 folders
+
+Working with File and Directories
+- `System.IO namespace` - File, Directory and Path class
+- `FileInfo and DirectoryInfo` are alternatives
+
+Availabe functionalities for `System.IO.Directory Class`
+- `CreateDirectory(path)`
+- `Exists(path)`
+- `Delete(path)`
+
+Availabe functionalities for `System.IO.File Class`
+- `Move(source, destination)`
+- `Copy(source, destination)`
+- `Exist(path)`
+- `Delete(path)`
+- `ReadAllText(path)`
+- `WriteAllText(path, text)`
+
+```cs
+//Utilities.cs
+internal class Utilities
+{
+    private static string directory = @"D:\data\BethanysPieShopHRM";
+    private static string fileName = "employess.txt";
+
+    internal static void CheckForExistingEmployeeFile()
+    {
+        string path = $"{directory}{fileName}";
+        bool existingFileFound = File.Exists(path);
+
+        if(existingFileFound)
+        {
+            Console.WriteLine("An existing file with Emplyee data is found. ");
+        }
+        else
+        {
+            if(!Directory.Exists(directory))// if (not exists)
+            {
+                Directory.CreateDirectory(directory);
+                Console.WriteLine("Directory is ready for saving files");
+            }
+        }
+    }
+
+}
+```
+---
+Reading and Writing Text
+- `File` Class
+- `FileStream`
+- `StreamReader & StreamWriter`
+
+exe:
+```cs
+string path = @"D:\sample.txt"
+
+string[] lines;
+
+lines = FileReadAllLines(path);
+
+File.WriteAllText(path, text)
+```
+Demo:
+```cs
+internal static void SaveEmployees(List<Employee> employees)
+{
+    string path = $"{directory}{fileName}"
+    StringBuilder sb = new StringBuilder();
+    foreach(Employee employee in employees)
+    {
+        sb.Append($"firstName:{employee.FirstName};")
+        ...
+        
+        sb.Append(Environment.NewLine)
+    }
+    File.WriteAllText(path, sb.ToString())
+    Console.WriteLine("Saved employees successfully")
+}
+// The load is longer, not hard. check the saved files 
+```
+The `is` keyword can check if an object is the correct type. `if ( employee is Manager){...}`
+
+---
+#### Handling Exceptions
 ```cs
 ```
 ```cs
