@@ -1376,7 +1376,7 @@ RigthClick on Project directory -> Manage NuGet Packages
 ---
 Creating Enumerations
 - Named constants for improved readability
-- Value type (integer vammue with a name)
+- Value type (integer value with a name)
 - Uses `enum` keyword
 ```cs
 enum EmployeeType
@@ -1478,8 +1478,9 @@ BethanysPieShopHRM2.Accounting.Customer customer = new BethanysPieShopHRM2.Accou
 ---
 Static Data
 - It's defined on the class level and not on the obj level, shared with all objs
-- So I can use it without instantiating an object of this class
 - Static methods can only work with static Data
+
+- A static class in C# is a class that cannot be instantiated (i.e., you cannot create an object of it). It is used to group related members such as methods, properties, or other types (like enums) that don’t need an instance to operate.
 ```cs
 public class Emplopyee
 {
