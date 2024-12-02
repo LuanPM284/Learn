@@ -1,4 +1,4 @@
-# Personal Notes on learing C#
+# Personal Notes on learning C#
 There are my notes, a way to save information while on my journey to learn `C#`.
 
 I will be using *pluralsight* course for an introduction to the language and environment.
