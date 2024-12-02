@@ -1768,8 +1768,8 @@ The Four Pillars of OO
     - Correct method will be used based on execution
 
 ---
-In order to change private fiels from a class we need a method that can get long with the the number of fields.
-We can instead use Properties, that will enable the interaction with private fields. Allows ust to expose data but without showing the behind logic.
+In order to change private fiedls (variables) from a class we need a method that can get along with the the number of fields.
+We can instead use Properties, that will enable the interaction with private fields. Allows us to expose data but without showing the behind logic.
 
 **Encapsulation**
 
