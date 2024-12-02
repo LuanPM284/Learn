@@ -1108,7 +1108,7 @@ Employee employee = new Employee();
 |Create a variable: Variable type Varaible name|new Object of Class Employee()|
 
 Constructors
-- called when instatiating an object happens
+- Called when instantiating an object
 - Default or custom
 - Used to set initial valuesss
 
