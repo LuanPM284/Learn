@@ -1,4 +1,4 @@
-# Personal Notes on learing C#
+# Personal Notes on learning C#
 There are my notes, a way to save information while on my journey to learn `C#`.
 
 I will be using *pluralsight* course for an introduction to the language and environment.
@@ -1108,7 +1108,7 @@ Employee employee = new Employee();
 |Create a variable: Variable type Varaible name|new Object of Class Employee()|
 
 Constructors
-- called when instatiating an object happens
+- Called when instantiating an object
 - Default or custom
 - Used to set initial valuesss
 
@@ -1376,7 +1376,7 @@ RigthClick on Project directory -> Manage NuGet Packages
 ---
 Creating Enumerations
 - Named constants for improved readability
-- Value type (integer vammue with a name)
+- Value type (integer value with a name)
 - Uses `enum` keyword
 ```cs
 enum EmployeeType
@@ -1478,8 +1478,9 @@ BethanysPieShopHRM2.Accounting.Customer customer = new BethanysPieShopHRM2.Accou
 ---
 Static Data
 - It's defined on the class level and not on the obj level, shared with all objs
-- So I can use it without instantiating an object of this class
 - Static methods can only work with static Data
+
+- A static class in C# is a class that cannot be instantiated (i.e., you cannot create an object of it). It is used to group related members such as methods, properties, or other types (like enums) that don’t need an instance to operate.
 ```cs
 public class Emplopyee
 {
@@ -1768,8 +1769,8 @@ The Four Pillars of OO
     - Correct method will be used based on execution
 
 ---
-In order to change private fiels from a class we need a method that can get long with the the number of fields.
-We can instead use Properties, that will enable the interaction with private fields. Allows ust to expose data but without showing the behind logic.
+In order to change private fiedls (variables) from a class we need a method that can get along with the the number of fields.
+We can instead use Properties, that will enable the interaction with private fields. Allows us to expose data but without showing the behind logic.
 
 **Encapsulation**
 
@@ -2050,6 +2051,7 @@ internal class EMployee: IEmployee
 }
 // All the methods have an implementation inside the Employee Class
 ```
+---
 #### Testing C# Code
 
 Debugger
