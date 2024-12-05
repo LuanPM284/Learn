@@ -492,6 +492,8 @@ We will create a catch all type propery this case a Dictionary.
 <MyButton OnClick ="IncrementCount" class="btn btn-danger">MyButton</MyButton>
 // now the class using Bootstrap should be alowed since we do have a catch all parameter
 ```
+### Data Binding in Blazor
+
 ```cs
 ```
 ```cs
