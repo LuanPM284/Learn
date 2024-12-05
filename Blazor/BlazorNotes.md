@@ -295,6 +295,8 @@ And the `Components/` folder with all the components, with the root being `App.r
 Special file, the `Imports.razor`, that contain razor directives that we can make available/import to all other razor files. Like a general area for the `using` in the razor files.
 
 ### Handling UI Events
+Allows code to run once a certain event is triggered. Generally HTML events.
+
 As seen before, an exemple would be the `@onclick` inside the tag, that will run the method. We can add other types of expressions like an async method or a lambda expression.
 ```cs
 // Counter.razor
@@ -493,9 +495,156 @@ We will create a catch all type propery this case a Dictionary.
 // now the class using Bootstrap should be alowed since we do have a catch all parameter
 ```
 ### Data Binding in Blazor
+Get and update a value from inputs.
+```cs
+//Counter.razor
+...
+
+<div class="mt-3">
+	<input value="@text" @onchange = "OnChange"> // value is an attibute present on input element
+	<button @onclick = "OnClick">Clear</button> // onclick is an event handler from HTML events
+	<p>@text</p>
+</div>
+
+@code
+{
+...
+    // ChangeEventArgs, this is part of C# events
+    // a method that will handle an event when the event provides data 
+    private void OnChange(ChangeEventArgs e)// void since no return value
+    {
+        text = (string)e.Value!; // Value is an attribute from input element, convert the type object to string
+    }
+
+    private void OnClick(MouseEventArgs e)
+    {
+        text = ""; // We empty the string
+    }
+
+}
+```
+The way above works. But there is a simple way, using databinds. We are binding the input to the text value by usnig `@bind = "text"`. If one changes, the other will also change, we can also remove the `OnChange` event handler.
 
 ```cs
+//Counter.razor
+...
+
+<div class="mt-3">
+	<input @bind= "text">
+	<button @onclick = "OnClick">Clear</button> // onclick is an event handler from HTML events
+	<p>@text</p>
+</div>
+
+@code
+{
+...
+    // ChangeEventArgs, this is part of C# events
+    // a method that will handle an event when the event provides data 
+    @*
+    private void OnChange(ChangeEventArgs e)// void since no return value
+    {
+        text = (string)e.Value!; // Value is an attribute from input element, convert the type object to string
+    }
+    *@
+
+    private void OnClick(MouseEventArgs e)
+    {
+        text = ""; // We empty the string
+    }
+
+}
 ```
+We can also bind events, for example if we want the event to change with the input.
+```cs
+<div class="mt-3">
+	<input @bind= "text" @bind:event= "oninput"> // We use ':' for an event bind
+	<button @onclick = "OnClick">Clear</button> 
+	<p>@text</p>
+</div>
+```
+We can also have methods running after another event or in realtime. For example a search, while we are writting the search is happening.
+```cs
+<div class="mt-3">
+	<input @bind= "text" @bind:event= "oninput" @bind:after= "search" > // We use ':' for an event bind
+	<button @onclick = "OnClick">Clear</button> 
+	<p>@text</p>
+</div>
+
+@code
+{
+    string searchResult;
+    ...
+
+    async Task Search() // Async function, so we need to wait for a response
+    {
+        searchResult = "Searching ..." // inital text, showing we are starting something
+        await Task.Delay(2000) // we await 2 seconds
+        searchResult = $"{Random.Shared.Next()} results!"
+    }
+}
+```
+Now let's try to use what we have seen until now. Creating a new page `Todo.razor`, don't forget to add it to the `NavMenu.razor`.
+```cs
+// NavMenu.razor
+...
+// Our own button on the navbar, just a copy of another
+<div class="nav-item px-3">
+    <NavLink class="nav-link" href="todo">
+        <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Todo
+    </NavLink>
+</div>
+
+// Todo.razor
+@page "/todo" // Routes to the todo when clicked
+@rendermode InteractiveServer // Allows live interaction with the page, necessary for response 
+
+// A text area where we display the checkboxes where the propertie IsDone is true 
+<h3>Todo (@todos.Count(t => !t.IsDone))</h3>
+
+// A list to display every todo item as an element
+<ul>
+	@foreach(var todo in todos) // A loop for every element on the list
+	{
+		<li> // Creates a list element
+			@* @todo.Title *@ // Just the Title of the element on the list
+			<input type="checkbox" @bind="todo.IsDone"> // An input binded to the IsDone property
+			<input @bind="todo.Title"> // An input binded to the Title property
+			</li>
+            // Binded in the sense that it changes with input
+	}
+</ul>
+
+<input @bind ="newTodo"> // A input binded with newTodo string, reacts to it's change
+<button @onclick = "AddTodo">AddTodo</button> // A button with an event that runs AddTodo method
+
+@code {
+    // A list type that recieves objects of TodoItem that have a Title and a IsDone fields
+	List<TodoItem> todos = new List<TodoItem>(); // A new instance of a list
+
+	string newTodo = ""; // An empty string for the input
+	public class TodoItem // A class to be able to create a TodoItem object
+	{
+		public string Title { get; set; } // A field that is able to get and set values, property
+
+		public bool IsDone { get; set; } // A field that is able to get and set values, property
+	}
+	private void AddTodo(MouseEventArgs e) // A method for the TodoItem Class
+	{
+		if(!string.IsNullOrWhiteSpace(newTodo)) // A string method to check if not a spave or null
+		{
+            // A list type method to add into the list
+            // we add a new object of the type TodoItem and assign the newTodo input to the Title field
+			todos.Add(new TodoItem { Title = newTodo }); 
+			newTodo = ""; // We empty the input, to be reused
+		}
+	}
+}
+
+// An object is needed to store the values of the todo list items. 
+// So we create a class that can instantiate objects.
+// We bind the correct inputs and buttons to recieve and display data
+```
+
 ```cs
 ```
 ```cs
