@@ -1,4 +1,4 @@
-# Blazor
+# Blazor dotnet Youtube
 
 [Source](https://www.youtube.com/watch?v=sbXzifvMKXE&list=PLdo4fOcmZ0oXNZX1Q8rB-5xgTSKR8qA5k&index=4)
 
@@ -851,11 +851,4 @@ namespace BlazorMovieApp
 
 // Notice that the components are not interactive since no rendermode is running, we can add that
 // once that is active, the box becomes green showing the correct input was made
-```
-
-```cs
-```
-```cs
-```
-```cs
 ```
