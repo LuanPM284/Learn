@@ -644,7 +644,217 @@ Now let's try to use what we have seen until now. Creating a new page `Todo.razo
 // So we create a class that can instantiate objects.
 // We bind the correct inputs and buttons to recieve and display data
 ```
+### Component Render Modes
+SSR (Static server-side rendering)
+    - Enchance navigation & form handling: only what is fetched is downloaded
+    - Streaming rendering: GET for data retrieval stream updates
+Add client interactivity:
+- Server: ASP.NET Core, real time with WebSocket 
+- WebAssembly: localy built
+- both: Auto select render mode at runtime
 
+For a new project we can choose the type of interactivity with the following:
+```sh
+#terminal
+dotnet new blazor --interactivity
+#OR -int
+dotnet new blazor -int
+# Options 
+dotnet new blazor -int None|Server|WebAssembly|Auto
+``` 
+With this kind of webapp we have two projects, a server and a client:
+```
+BlazorApp2
+|-- BlazorApp2
+|-- BlazorApp2.Client
+```
+The pages, like counter are on the `.client` project directory. No longer everything together.
+
+In our `program.cs` we have the options:
+```cs
+...
+
+// Add services to the container.
+builder.Services.AddRazorComponents()
+    .AddInteractiveServerComponents()
+    .AddInteractiveWebAssemblyComponents();
+...
+```
+Before we had to add the interactive rendermode so we could interact realtime with our code. We can also specify that when building the project.
+```sh
+dotnet new blazor -int Auto --all-interactive
+#OR abreviation 
+dotnet new blazor -int Auto -ai BlazorApp3 
+```
+The new solutions folder will contain two projects like before, but the component on the server project contain very little. Most of the pages are on the client side.
+
+We can check that all components will be interactive, and can change the type of render, by looking at `App.razor`
+```cs
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <link rel="stylesheet" href="@Assets["lib/bootstrap/dist/css/bootstrap.min.css"]" />
+    <link rel="stylesheet" href="@Assets["app.css"]" />
+    <link rel="stylesheet" href="@Assets["BlazorApp3.styles.css"]" />
+    <ImportMap />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <HeadOutlet @rendermode="InteractiveAuto" />
+</head>
+
+<body>
+    <Routes @rendermode="InteractiveAuto" /> // ---HERE---
+    <script src="_framework/blazor.web.js"></script>
+</body>
+
+</html>
+```
+### Work with Data
+We start a new project, name `BlazorMovieApp`.
+
+We will try and do CRUD(Create Read Update Delete) operations.
+
+A new class will be added:
+```cs
+// Movie.cs
+
+using System.ComponentModel.DataAnnotations;
+
+namespace BlazorMovieApp
+{
+    public class Movie
+    {
+        public int Id { get; set; }
+        public string? Title { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? ReleaseDate { get; set; }
+        public string? Genre { get; set; }
+        public string Price { get; set; }
+    }
+}
+```
+Following the load or write of the file we will add a scafolded Item: Razor Components using Entity Framework (CRUD) => CRUD => Movie => + sign and default => SQL Server
+
+Now we get a new folder `MoviePages/` with all out CRUD default code
+
+Before running the app we need to set up the database with the new database schema using Entity framework core. For that we need to add and apply a migration.
+
+EFCore Migration
+
+We will use the NuGet Packet Manager, we open the Package Manager Console:
+```sh
+# This will generate a migration file
+Add-Migration Movies
+# We will then update our database
+Update-Database
+```
+Now we can run our application, no page is on the navMenu but we can go to "/movies". As we can see on the `index.razor` the route `@page "/movies"`.
+
+This gives us access to a simple table and the option to create a new entry. We can do all the CRUD operations, it was created for us ussing the scaffold.
+
+We can add addictional attributs. Such as 'Title', 'Format', 'Sortable'. Nothing will happen without an interactive rendermode so do no forget to add it.
+```cs
+// Index.razor
+@page "/movies"
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using BlazorMovieApp
+@using BlazorMovieApp.Data
+@implements IAsyncDisposable
+@inject IDbContextFactory<BlazorMovieApp.Data.BlazorMovieAppContext> DbFactory
+// Here the interactive
+@rendermode InteractiveServer
+<PageTitle>Index</PageTitle>
+
+<h1>Index</h1>
+
+<p>
+    <a href="movies/create">Create New</a>
+</p>
+// Here we changed Items from contect.Movie to FilteredMovies
+<QuickGrid Class="table" Items="FilteredMovies" Pagination="State">
+    // Pagination instance must be passed here
+    <PropertyColumn Property="movie => movie.Title" Sortable="true">
+        // Widget on the UI that we can attach to a column heading
+        <ColumnOptions>
+            <div>
+            // Type seach, with bind to the variable that contains the search Query, autofocus for mouse stay
+                <input type="search" @bind="titleFilter" @bind:event="oninput" autofocus/>
+            </div>
+        </ColumnOptions>
+    </PropertyColumn>
+    // Here we have attributes we can add
+    <PropertyColumn Property="movie => movie.ReleaseDate" Title="Release Date" Format="dd/MM/yyyy"/>
+    <PropertyColumn Property="movie => movie.Genre" />
+    <PropertyColumn Property="movie => movie.Price" />
+
+    <TemplateColumn Context="movie">
+        <a href="@($"movies/edit?id={movie.Id}")">Edit</a> |
+        <a href="@($"movies/details?id={movie.Id}")">Details</a> |
+        <a href="@($"movies/delete?id={movie.Id}")">Delete</a>
+    </TemplateColumn>
+</QuickGrid>
+// This is another built-in component like QuickGrid
+// Asks for a state parameter, created on @code
+<Paginator State ="State"/>
+
+@code {
+    // A state parameter instance
+    PaginationState State = new PaginationState { ItemsPerPage = 2 }; // ItemsPerPage will limit the items per page displayed
+
+    String titleFilter = "";
+    // A property that returns a Query, here DB.Movie is context.Movie
+    IQueryable<Movie> FilteredMovies => context.Movie.Where(m => m.Title.Contains(titleFilter));
+
+
+    private BlazorMovieAppContext context = default!;
+
+    protected override void OnInitialized()
+    {
+        context = DbFactory.CreateDbContext();
+    }
+
+    public async ValueTask DisposeAsync() => await context.DisposeAsync();
+}
+```
+For more examples on quikgrid: https://aspnet.github.io/quickgridsamples/
+
+### Forms & Validation
+Way for users can submit data. We can see more of the bahaviour on `create.razor` on <EditForm>, and <InputText>, etc.
+
+We can also add annotations to our data to chose validation types. As an example for our movie database.
+```cs
+using System.ComponentModel.DataAnnotations;
+
+namespace BlazorMovieApp
+{
+    public class Movie
+    {
+        public int Id { get; set; }
+        [Required] // This is makes it so Title is required, it creates a validation rule
+        public string? Title { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? ReleaseDate { get; set; }
+        public string? Genre { get; set; }
+        [Range(0,100)] // We can define a range, avoid negative
+        public decimal Price { get; set; }
+    }
+}
+
+// On create.razor, the component <DataAnnotationValidator> will look for the annotations 
+// and determine the rules to run
+
+// Other components also gives us errors when input no validated
+
+// Notice that the components are not interactive since no rendermode is running, we can add that
+// once that is active, the box becomes green showing the correct input was made
+```
+
+```cs
+```
 ```cs
 ```
 ```cs
