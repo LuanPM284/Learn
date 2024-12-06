@@ -54,24 +54,28 @@ Passing parameters to components, comes from the C# properties:
 @code
 {
     // new field, initialized at 0
-	private int currentCount2 = 0;
+ private int currentCount2 = 0;
     
-	[Parameter] // This is what shows Blazor that the following protpertie is a parameter
-	public int IncrementAmount { get; set; } = 1; // a new propertie in C#
+ [Parameter] // This is what shows Blazor that the following protpertie is a parameter
+ public int IncrementAmount { get; set; } = 1; // a new propertie in C#
 
-	public void IncrementCount() // a method
-	{
-		currentCount2 += IncrementAmount;
-	}
+ public void IncrementCount() // a method
+ {
+  currentCount2 += IncrementAmount;
+ }
 }
 ```
+
 Once we have our [Parameter] we call can it on other components like the following:
+
 ```cs
 // Home.razor
 
 <Counter IncrementAmount = "2" />
 ```
+
 We can create inline code blocks
+
 ```cs
 @
 {
@@ -81,9 +85,10 @@ We can create inline code blocks
 <Counter IncrementAmount = "amount" />
 ```
 
-### Pages, Routing and Layout
+## Pages, Routing and Layout
 
 We can route, assign where the webpage will lead to, using `@page "/routeName"`. And we are not limited to one route.
+
 ```cs
 // Counter.razor
 
@@ -91,7 +96,9 @@ We can route, assign where the webpage will lead to, using `@page "/routeName"`.
 @page "/counter2"
 // Same page but accessible with 2 different routes
 ```
+
 Passing parameters to a component using route:
+
 ```cs
 // Counter.razor
 @page "/counter/{initialCount}"
@@ -110,25 +117,27 @@ Passing parameters to a component using route:
 <p>
 @code
 {
-	private int currentCount = 0;
+ private int currentCount = 0;
 
-	[Parameter]
-	public string InitialCount{get; set;}// routes from an URL are strings
+ [Parameter]
+ public string InitialCount{get; set;}// routes from an URL are strings
 
-	// Once the constraint is in place we can cahange the type to int
+ // Once the constraint is in place we can cahange the type to int
     public int InitialCount{get; set;}// routes from an URL are strings
 
-	public void IncrementCount()
-	{
-		currentCount++;
-	}
+ public void IncrementCount()
+ {
+  currentCount++;
+ }
 }
 ```
+
 Doing something else, using a special Blazor component lifecycle method
+
 ```cs
 @code
 {
-	// private int currentCount = 0;
+ // private int currentCount = 0;
 
     /*
     The override modifier is required to extend or modify the abstract or virtual implementation of an inherited method, property, indexer, or event.
@@ -140,20 +149,22 @@ Doing something else, using a special Blazor component lifecycle method
 
 
     /*
-	[Parameter]
-	public string InitialCount{get; set;}// routes from an URL are strings
+ [Parameter]
+ public string InitialCount{get; set;}// routes from an URL are strings
 
-	// Once the constraint is in place we can cahange the type to int
+ // Once the constraint is in place we can cahange the type to int
     public int InitialCount{get; set;}// routes from an URL are strings
 
-	public void IncrementCount()
-	{
-		currentCount++;
-	}
+ public void IncrementCount()
+ {
+  currentCount++;
+ }
     */
 }
 ```
+
 The routes is handled by a component, the `Routes.razor`.
+
 ```cs
 // Routes.razor
 
@@ -164,7 +175,9 @@ The routes is handled by a component, the `Routes.razor`.
     </Found>
 </Router>
 ```
+
 The `Routes.razor` are being used by `App.razor` the roots component. First component to render.
+
 ```cs
 // App.razor
 
@@ -189,7 +202,9 @@ The `Routes.razor` are being used by `App.razor` the roots component. First comp
 
 </html>
 ```
+
 Blazor suppors Layouts, a common content that wraps all pages. We have Layout components. We can find them on the Loyouts directory.
+
 ```cs
 // MainLayout.razor
 
@@ -219,9 +234,11 @@ Blazor suppors Layouts, a common content that wraps all pages. We have Layout co
     <a class="dismiss">🗙</a>
 </div>
 ```
+
 The `NavMenu.razor` adds a new tag `<NavLink>` that created an anchor tag with the active state, type of animation.
 
 Thr Router is the one applying the layout to all pages.
+
 ```cs
 <Router AppAssembly="typeof(Program).Assembly">
     <Found Context="routeData">
@@ -230,7 +247,9 @@ Thr Router is the one applying the layout to all pages.
     </Found>
 </Router>
 ```
+
 We can add other layouts to different pages, using `@layout Layout.FileName` at the top.
+
 ```cs
 // Home.razor
 
@@ -238,10 +257,12 @@ We can add other layouts to different pages, using `@layout Layout.FileName` at 
 @layout Layout.FileName
 ...
 ```
-### Blazor Web App Project Structure
 
-Every project on C# has as `.csproj` project file. 
-- Here are settings and propeties on how our project will be built. 
+## Blazor Web App Project Structure
+
+Every project on C# has as `.csproj` project file.
+
+- Here are settings and propeties on how our project will be built.
 Also where dependdencies are specified.
 - Entry point: `Program.cs`
 
@@ -284,6 +305,7 @@ app.MapRazorComponents<App>() // Route component of the`App.razor`
 
 app.Run();
 ```
+
 On `wwwroot/` folder is where all the static files that we want to be downloadable. Stylesheets, images, js files. Webaddressable.
 
 On `Properties/` folder we have a `.json` type configuration file. `launchSettings.json` the settings and properties that run during development.
@@ -294,10 +316,12 @@ And the `Components/` folder with all the components, with the root being `App.r
 
 Special file, the `Imports.razor`, that contain razor directives that we can make available/import to all other razor files. Like a general area for the `using` in the razor files.
 
-### Handling UI Events
+## Handling UI Events
+
 Allows code to run once a certain event is triggered. Generally HTML events.
 
 As seen before, an exemple would be the `@onclick` inside the tag, that will run the method. We can add other types of expressions like an async method or a lambda expression.
+
 ```cs
 // Counter.razor
 
@@ -319,21 +343,21 @@ As seen before, an exemple would be the `@onclick` inside the tag, that will run
 @code
 {
 
-	private int currentCount = 0;
+ private int currentCount = 0;
     
-	protected override void OnInitialized()
-	{
-		currentCount = InitialCount;
-	}
+ protected override void OnInitialized()
+ {
+  currentCount = InitialCount;
+ }
 
-	[Parameter]
-	public int InitialCount {get; set;}
+ [Parameter]
+ public int InitialCount {get; set;}
 
     // a sync type event
-	public void IncrementCount()
-	{
-		currentCount++;
-	}
+ public void IncrementCount()
+ {
+  currentCount++;
+ }
 
     // async method, delays the count for 1000 milliseconds so 1 second
     async Task IncrementCountAync()
@@ -349,46 +373,52 @@ As seen before, an exemple would be the `@onclick` inside the tag, that will run
 
 }
 ```
+
 For an UI event such as `@onchange`, that will do something once the focus changes. An Event handler.
+
 ```cs
 // Counter.razor
 ...
 
 <div class="mt-3">
-	<input @onchange ="OnChange"> // @onchange handler, Onchange method
-	<p>@text</p> // show the text on screen once focus changes, after a tab for exemple
+ <input @onchange ="OnChange"> // @onchange handler, Onchange method
+ <p>@text</p> // show the text on screen once focus changes, after a tab for exemple
 </div>
 
 @code
 {
     string text = "";
     ...
-    	private void OnChange(ChangeEventArgs e) // This was automaticly generated once choice was made, e for event
-	{
-		text = (string)e.Value!;    // convert the .Value that gives an object to string; the ! is to say no null
-	}
+     private void OnChange(ChangeEventArgs e) // This was automaticly generated once choice was made, e for event
+ {
+  text = (string)e.Value!;    // convert the .Value that gives an object to string; the ! is to say no null
+ }
 }
 ```
+
 Another hanfler can be `@oninput` that will change on input. The text value will be updated with every keystroke
 
 Extra: We can rename by clicking F2.
+
 ```cs
 <div class="mt-3">
-	<input @oninput ="OnInput"> // @onchange handler, Onchange method
-	<p>@text</p> // show the text on screen once focus changes, after a tab for exemple
+ <input @oninput ="OnInput"> // @onchange handler, Onchange method
+ <p>@text</p> // show the text on screen once focus changes, after a tab for exemple
 </div>
 
 @code
 {
     string text = "";
     ...
-    	private void OnInput(ChangeEventArgs e) // This was automaticly generated once choice was made, e for event
-	{
-		text = (string)e.Value!;    // convert the .Value that gives an object to string; the ! is to say no null
-	}
+     private void OnInput(ChangeEventArgs e) // This was automaticly generated once choice was made, e for event
+ {
+  text = (string)e.Value!;    // convert the .Value that gives an object to string; the ! is to say no null
+ }
 }
 ```
+
 Another event handler, `@onmouseover` and `@onmouseout`. We will also use expression body for the methods. This will change the color and text when the mouse hovers over or it's outside the div.
+
 ```cs
 // Counter.razor
 ...
@@ -410,6 +440,7 @@ Another event handler, `@onmouseover` and `@onmouseout`. We will also use expres
 
 }
 ```
+
 Handle events from a component.
 
 First let us create a new component. Called `MyButton.razor`
@@ -420,29 +451,31 @@ First let us create a new component. Called `MyButton.razor`
 <button @onclick="OnButtonClick">Click me!</button>
 
 @code {
-	[Parameter] // Define a Parameter for my component
+ [Parameter] // Define a Parameter for my component
     // property getter and setter
     // type EventCallBack a readonly struct
     // MouseeventArgs a class, suplies events 
-	public EventCallBack<MouseeventArgs> OnClick{ get; set; }
+ public EventCallBack<MouseeventArgs> OnClick{ get; set; }
 
     // an async method
-    	private Task OnButtonClick(MouseEventArgs e)
-	{
-		return OnClick.InvokeAsync(e);
-	}
+     private Task OnButtonClick(MouseEventArgs e)
+ {
+  return OnClick.InvokeAsync(e);
+ }
 }
 
 // But we notice that our @onclick can take a EventCallBack as the attribute so we can simplify by doing
 <button @onclick="OnClick">Click me!</button>
 
 @code {
-	[Parameter] 
-	public EventCallBack<MouseeventArgs> OnClick{ get; set; }
+ [Parameter] 
+ public EventCallBack<MouseeventArgs> OnClick{ get; set; }
 
 }
 ```
+
 Now if we want to pass another HTML element to the button we can do the following:
+
 ```cs
 // MyButton.razor
 
@@ -451,13 +484,13 @@ Now if we want to pass another HTML element to the button we can do the followin
 
 @code {
     /*
-	[Parameter]
-	public EventCallback<MouseEventArgs> OnClick { get; set; }
+ [Parameter]
+ public EventCallback<MouseEventArgs> OnClick { get; set; }
     */
 
-	[Parameter]
+ [Parameter]
     // RenderFragment tells Blazor that will capture the content of the button component
-	public RenderFragment ChildContent { get; set; }
+ public RenderFragment ChildContent { get; set; }
 }
 
 // Counter.razor
@@ -465,9 +498,11 @@ Now if we want to pass another HTML element to the button we can do the followin
 <MyButton OnClick ="IncrementCount" >MyButton</MyButton> 
 // Now we can capture the childcontent, in between tags, and display as button text
 ```
+
 Now we want to style our button by writting on the class. But since we don't have a parameter as attribute Blazor throws us an error.
 
 We will create a catch all type propery this case a Dictionary.
+
 ```cs
 // MyButton.razor
 
@@ -476,16 +511,16 @@ We will create a catch all type propery this case a Dictionary.
 
 @code {
     /*
-	[Parameter]
-	public EventCallback<MouseEventArgs> OnClick { get; set; }
+ [Parameter]
+ public EventCallback<MouseEventArgs> OnClick { get; set; }
 
-	[Parameter]
-	public RenderFragment ChildContent { get; set; }
+ [Parameter]
+ public RenderFragment ChildContent { get; set; }
     */
 
     // for any extra stuff that the user decides to put on MyButton
-	[Parameter(CaptureUnmatchedValues = true)]
-	public Dictionary<string, object> AdditionalAttributes { get; set; }
+ [Parameter(CaptureUnmatchedValues = true)]
+ public Dictionary<string, object> AdditionalAttributes { get; set; }
     // the type sent is string or objects, the type Bootstrap has prepared
 }
 
@@ -494,16 +529,19 @@ We will create a catch all type propery this case a Dictionary.
 <MyButton OnClick ="IncrementCount" class="btn btn-danger">MyButton</MyButton>
 // now the class using Bootstrap should be alowed since we do have a catch all parameter
 ```
-### Data Binding in Blazor
+
+## Data Binding in Blazor
+
 Get and update a value from inputs.
+
 ```cs
 //Counter.razor
 ...
 
 <div class="mt-3">
-	<input value="@text" @onchange = "OnChange"> // value is an attibute present on input element
-	<button @onclick = "OnClick">Clear</button> // onclick is an event handler from HTML events
-	<p>@text</p>
+ <input value="@text" @onchange = "OnChange"> // value is an attibute present on input element
+ <button @onclick = "OnClick">Clear</button> // onclick is an event handler from HTML events
+ <p>@text</p>
 </div>
 
 @code
@@ -523,6 +561,7 @@ Get and update a value from inputs.
 
 }
 ```
+
 The way above works. But there is a simple way, using databinds. We are binding the input to the text value by usnig `@bind = "text"`. If one changes, the other will also change, we can also remove the `OnChange` event handler.
 
 ```cs
@@ -530,9 +569,9 @@ The way above works. But there is a simple way, using databinds. We are binding 
 ...
 
 <div class="mt-3">
-	<input @bind= "text">
-	<button @onclick = "OnClick">Clear</button> // onclick is an event handler from HTML events
-	<p>@text</p>
+ <input @bind= "text">
+ <button @onclick = "OnClick">Clear</button> // onclick is an event handler from HTML events
+ <p>@text</p>
 </div>
 
 @code
@@ -554,20 +593,24 @@ The way above works. But there is a simple way, using databinds. We are binding 
 
 }
 ```
+
 We can also bind events, for example if we want the event to change with the input.
+
 ```cs
 <div class="mt-3">
-	<input @bind= "text" @bind:event= "oninput"> // We use ':' for an event bind
-	<button @onclick = "OnClick">Clear</button> 
-	<p>@text</p>
+ <input @bind= "text" @bind:event= "oninput"> // We use ':' for an event bind
+ <button @onclick = "OnClick">Clear</button> 
+ <p>@text</p>
 </div>
 ```
+
 We can also have methods running after another event or in realtime. For example a search, while we are writting the search is happening.
+
 ```cs
 <div class="mt-3">
-	<input @bind= "text" @bind:event= "oninput" @bind:after= "search" > // We use ':' for an event bind
-	<button @onclick = "OnClick">Clear</button> 
-	<p>@text</p>
+ <input @bind= "text" @bind:event= "oninput" @bind:after= "search" > // We use ':' for an event bind
+ <button @onclick = "OnClick">Clear</button> 
+ <p>@text</p>
 </div>
 
 @code
@@ -583,7 +626,9 @@ We can also have methods running after another event or in realtime. For example
     }
 }
 ```
+
 Now let's try to use what we have seen until now. Creating a new page `Todo.razor`, don't forget to add it to the `NavMenu.razor`.
+
 ```cs
 // NavMenu.razor
 ...
@@ -603,15 +648,15 @@ Now let's try to use what we have seen until now. Creating a new page `Todo.razo
 
 // A list to display every todo item as an element
 <ul>
-	@foreach(var todo in todos) // A loop for every element on the list
-	{
-		<li> // Creates a list element
-			@* @todo.Title *@ // Just the Title of the element on the list
-			<input type="checkbox" @bind="todo.IsDone"> // An input binded to the IsDone property
-			<input @bind="todo.Title"> // An input binded to the Title property
-			</li>
+ @foreach(var todo in todos) // A loop for every element on the list
+ {
+  <li> // Creates a list element
+   @* @todo.Title *@ // Just the Title of the element on the list
+   <input type="checkbox" @bind="todo.IsDone"> // An input binded to the IsDone property
+   <input @bind="todo.Title"> // An input binded to the Title property
+   </li>
             // Binded in the sense that it changes with input
-	}
+ }
 </ul>
 
 <input @bind ="newTodo"> // A input binded with newTodo string, reacts to it's change
@@ -619,41 +664,45 @@ Now let's try to use what we have seen until now. Creating a new page `Todo.razo
 
 @code {
     // A list type that recieves objects of TodoItem that have a Title and a IsDone fields
-	List<TodoItem> todos = new List<TodoItem>(); // A new instance of a list
+ List<TodoItem> todos = new List<TodoItem>(); // A new instance of a list
 
-	string newTodo = ""; // An empty string for the input
-	public class TodoItem // A class to be able to create a TodoItem object
-	{
-		public string Title { get; set; } // A field that is able to get and set values, property
+ string newTodo = ""; // An empty string for the input
+ public class TodoItem // A class to be able to create a TodoItem object
+ {
+  public string Title { get; set; } // A field that is able to get and set values, property
 
-		public bool IsDone { get; set; } // A field that is able to get and set values, property
-	}
-	private void AddTodo(MouseEventArgs e) // A method for the TodoItem Class
-	{
-		if(!string.IsNullOrWhiteSpace(newTodo)) // A string method to check if not a spave or null
-		{
+  public bool IsDone { get; set; } // A field that is able to get and set values, property
+ }
+ private void AddTodo(MouseEventArgs e) // A method for the TodoItem Class
+ {
+  if(!string.IsNullOrWhiteSpace(newTodo)) // A string method to check if not a spave or null
+  {
             // A list type method to add into the list
             // we add a new object of the type TodoItem and assign the newTodo input to the Title field
-			todos.Add(new TodoItem { Title = newTodo }); 
-			newTodo = ""; // We empty the input, to be reused
-		}
-	}
+   todos.Add(new TodoItem { Title = newTodo }); 
+   newTodo = ""; // We empty the input, to be reused
+  }
+ }
 }
 
 // An object is needed to store the values of the todo list items. 
 // So we create a class that can instantiate objects.
 // We bind the correct inputs and buttons to recieve and display data
 ```
-### Component Render Modes
+
+## Component Render Modes
+
 SSR (Static server-side rendering)
     - Enchance navigation & form handling: only what is fetched is downloaded
     - Streaming rendering: GET for data retrieval stream updates
 Add client interactivity:
-- Server: ASP.NET Core, real time with WebSocket 
+
+- Server: ASP.NET Core, real time with WebSocket
 - WebAssembly: localy built
 - both: Auto select render mode at runtime
 
 For a new project we can choose the type of interactivity with the following:
+
 ```sh
 #terminal
 dotnet new blazor --interactivity
@@ -661,16 +710,20 @@ dotnet new blazor --interactivity
 dotnet new blazor -int
 # Options 
 dotnet new blazor -int None|Server|WebAssembly|Auto
-``` 
+```
+
 With this kind of webapp we have two projects, a server and a client:
+
 ```
 BlazorApp2
 |-- BlazorApp2
 |-- BlazorApp2.Client
 ```
+
 The pages, like counter are on the `.client` project directory. No longer everything together.
 
 In our `program.cs` we have the options:
+
 ```cs
 ...
 
@@ -680,15 +733,19 @@ builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 ...
 ```
+
 Before we had to add the interactive rendermode so we could interact realtime with our code. We can also specify that when building the project.
+
 ```sh
 dotnet new blazor -int Auto --all-interactive
 #OR abreviation 
 dotnet new blazor -int Auto -ai BlazorApp3 
 ```
+
 The new solutions folder will contain two projects like before, but the component on the server project contain very little. Most of the pages are on the client side.
 
 We can check that all components will be interactive, and can change the type of render, by looking at `App.razor`
+
 ```cs
 <!DOCTYPE html>
 <html lang="en">
@@ -712,12 +769,15 @@ We can check that all components will be interactive, and can change the type of
 
 </html>
 ```
+
 ### Work with Data
+
 We start a new project, name `BlazorMovieApp`.
 
 We will try and do CRUD(Create Read Update Delete) operations.
 
 A new class will be added:
+
 ```cs
 // Movie.cs
 
@@ -736,6 +796,7 @@ namespace BlazorMovieApp
     }
 }
 ```
+
 Following the load or write of the file we will add a scafolded Item: Razor Components using Entity Framework (CRUD) => CRUD => Movie => + sign and default => SQL Server
 
 Now we get a new folder `MoviePages/` with all out CRUD default code
@@ -745,17 +806,20 @@ Before running the app we need to set up the database with the new database sche
 EFCore Migration
 
 We will use the NuGet Packet Manager, we open the Package Manager Console:
+
 ```sh
 # This will generate a migration file
 Add-Migration Movies
 # We will then update our database
 Update-Database
 ```
+
 Now we can run our application, no page is on the navMenu but we can go to "/movies". As we can see on the `index.razor` the route `@page "/movies"`.
 
 This gives us access to a simple table and the option to create a new entry. We can do all the CRUD operations, it was created for us ussing the scaffold.
 
 We can add addictional attributs. Such as 'Title', 'Format', 'Sortable'. Nothing will happen without an interactive rendermode so do no forget to add it.
+
 ```cs
 // Index.razor
 @page "/movies"
@@ -820,12 +884,15 @@ We can add addictional attributs. Such as 'Title', 'Format', 'Sortable'. Nothing
     public async ValueTask DisposeAsync() => await context.DisposeAsync();
 }
 ```
-For more examples on quikgrid: https://aspnet.github.io/quickgridsamples/
 
-### Forms & Validation
-Way for users can submit data. We can see more of the bahaviour on `create.razor` on <EditForm>, and <InputText>, etc.
+For more examples on quikgrid: <https://aspnet.github.io/quickgridsamples/>
+
+## Forms & Validation
+
+Way for users can submit data. We can see more of the bahaviour on `create.razor` on <\EditForm>, and <\InputText>, etc.
 
 We can also add annotations to our data to chose validation types. As an example for our movie database.
+
 ```cs
 using System.ComponentModel.DataAnnotations;
 
