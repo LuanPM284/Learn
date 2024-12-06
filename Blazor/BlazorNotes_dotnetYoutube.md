@@ -714,7 +714,7 @@ dotnet new blazor -int None|Server|WebAssembly|Auto
 
 With this kind of webapp we have two projects, a server and a client:
 
-```
+```md
 BlazorApp2
 |-- BlazorApp2
 |-- BlazorApp2.Client
