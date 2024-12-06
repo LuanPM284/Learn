@@ -1,11 +1,15 @@
-# Personal Notes on learning C#
+# Personal Notes on learning C #
+
 There are my notes, a way to save information while on my journey to learn `C#`.
 
 I will be using *pluralsight* course for an introduction to the language and environment.
 
-## C# Fundamentals
-### Getting Started with C# and .NET
-#### Setting up environment
+## C# Fundamentals #
+
+### Getting Started with C# and .NET #
+
+#### Setting up environment #
+
 Course uses: .NET 8, C# 12. For beginners *what-is-programming* recommended.
 
 For this course the exercices can be found at *c-sharp-10-fundamentals-exercises*.
@@ -13,6 +17,7 @@ For this course the exercices can be found at *c-sharp-10-fundamentals-exercises
 It's Object-oriented and type-safe. Backwards compatible.
 
 Uses for the language:
+
 - Console applications
 - Descktop applications
 - Web applications
@@ -25,7 +30,7 @@ I will be using Visual Studio 2022.
 
 > fix no suggestions appearing: Tools -> Options -> Text Editor -> [Language] -> General and making sure that Auto list members and Parameter information are checked
 
-#### Projects
+#### Projects #
 
 Container for code files => Compiled into exe file => Different templates
 
@@ -40,6 +45,7 @@ To print on screen we do:
 ```cs
 Console.WriteLine("texte");
 ```
+
 Where `texte` is surronded by `""` and all lines must end with a semi-colon `;`
 
 For an exemple we have an input for the console:
@@ -50,9 +56,10 @@ string name = Console.ReadLine();
 // prints the input on console
 Console.WriteLine("Hello " + name);
 ```
+
 The file structure is the following:
 
-```
+```md
 c-sharp-10-fundamentals-exercises/
 c-sharp-10-fundamentals-exercises.zip
 Projects/
@@ -67,7 +74,7 @@ Projects/
 
 For our application we can find it on the bin folder :
 
-```
+```md
 ...
 HelloFromCSharp/
 ├── bin/
@@ -79,7 +86,8 @@ HelloFromCSharp/
 │   │   │   └── HelloFromCSharp.pdb 
 ...
 ```
-#### Debugging
+
+#### Debugging #
 
 Visual Studio has a degugger. It used Breakpoints (F9 do add): pause the running code, inspect and see different code lines.
 
@@ -90,7 +98,7 @@ For the breack point we can click on the left most side of the line, a grey circ
 
 Once on debugging mode, we can run the application step by step (line by line) using the step over arrow on the top middle part of the screen, or click F10.
 
-#### Building application using VScode and the CLI
+#### Building application using VScode and the CLI #
 
 CLI: commmand-line interface => for windows we use powershell
 
@@ -108,11 +116,13 @@ dotnet new console -n "FirstProgram"
 # console: type of app
 # -n "FirstProgram": name of app
 ```
+
 Here VScode will be used for the demo project.
 
-First, install the SDk: https://dotnet.microsoft.com/en-us/download/dotnet/8.0 
+First, install the SDk: <https://dotnet.microsoft.com/en-us/download/dotnet/8.0>
 
 On PowerShell:
+
 ```sh
 cd to project Directory, my case Learn/C#/Projects
 
@@ -123,8 +133,10 @@ dotnet new # gives us some types of applications I can create
 dotnet new console -n "HelloWorldFromCLI" # creates new app and names the directory with flag -n
 
 ```
+
 File structure of new project:
-```
+
+```md
 ...
 HelloFromCSharp/
 HelloFromCLI/
@@ -143,7 +155,8 @@ To run an app we write on terminal or powershell: `dotnet run Program.cs`
 
 But from VScode we can use an extension (C# dev kit) that helps us run the app and the debbug.
 
-Using Vscode we can do: 
+Using Vscode we can do:
+
 - `CTRL + SHIft + P` to open a project manager
 - write `.NET new project` to create new
 - choose the kind of project, this case `console`
@@ -159,20 +172,23 @@ Once a project is running we can debbug using breakpoints. We initiate a debbug 
 
 The tutorial will use Visual Studio, but all can be done using the terminal or VScode.
 
-#### Browsing the Docs
+#### Browsing the Docs #
+
 [C# Documentation](https://learn.microsoft.com/en-us/dotnet/csharp/)
 
-### Learning the C# Syntax
+### Learning the C# Syntax #
+
 Types, operators, date and time
 
-#### Essentials C# Building Blocks
-**Statements**
+#### Essentials C# Building Blocks #
 
-Actions => Flow of the program => End with semicolon, no spaces or line changes. 
+##### Statements #
+
+Actions => Flow of the program => End with semicolon, no spaces or line changes.
 
 We can denfine identifiers (sart with a letter or underscore and can contain letters, digits and underscores)
 
-**Comments**
+##### Comments #
 
 // For a comment line
 
@@ -180,7 +196,7 @@ We can denfine identifiers (sart with a letter or underscore and can contain let
     Block comment
 */
 
-**Variables**
+##### Variables #
 
 A variable hodls value. They must be of a type ( Integer, string, date...).
 We create a variable by declarating.
@@ -190,6 +206,7 @@ We create a variable by declarating.
 int age;
 int Age;
 ```
+
 CamelCase is a convention.
 
 Assigning a variable.
@@ -206,7 +223,7 @@ We can move lines by holdinh *alt + arrow keys*
 
 Or Comment a line or multiple selected with *CTRL + K + C* and unComment with *CTRL + K + U*
 
-**Types**
+##### Types #
 
 C# is a strongly typed language.
 
@@ -215,6 +232,7 @@ Size and location in memory, Data range and supported operations.
 Data types in C#: Predefined, Created
 
 Predefined (primitive data types):
+
 - bool
 - int
 - float
@@ -228,13 +246,16 @@ Predefined (primitive data types):
 - string
 
 Creating an Integer Value
+
 ```cs
 int a = 2;
 int b = a + 3; // an expression, types must be the same on both sides
 ```
+
 Types are immutable.
 
 An exemple from the demo project:
+
 ```cs
 // an int type, so numerical
 int monthlyWage = 1234;
@@ -258,16 +279,18 @@ hoursWorked = 148; //  I can change the value by reassigning
 
 montlyWage = true; // I get an error, since the var is an intn this is type dafety
 ```
-**Using a const Value**
+
+##### Using a const Value #
 
 A variable that does not change.
+
 ```cs
 const double interestRate = 0.07;
 
 interestRate = 0.08; // error
 ```
 
-**Strings**
+##### Strings #
 
 A list of characters. Stored as list of char objects.
 
@@ -275,7 +298,9 @@ A list of characters. Stored as list of char objects.
 string s1 = "Hello World";
 string s2 = string.empty;
 ```
+
 Exemple:
+
 ```cs
 string firstName = "Bethany";
 string lastName = "smith";
@@ -286,12 +311,13 @@ Console.WriteLine("Please enter your name");
 string name = Console.ReadLine();
 ```
 
-**Operators**
+##### Operators #
 
 Aritmetic, Equality, Logical and Assigment operators.
 (+,-,*,/,++,--)
 
 Exemple:
+
 ```cs
 
 double ratePerHour = 12.34;
@@ -313,11 +339,13 @@ numberOfEmployees--; // -1 to the variable
 bool a; // false by default, or nor assigned
 int b; // 0 by default
 ```
-**Build-in types**
+
+##### Build-in types #
 
 [Documentation](https://learn.microsoft.com/en-us/dotnet/api/system.int32?view=net-8.0)
 
 Members on Primitive Types:
+
 ```cs
 int intMaxValue = int.MaxValue;
 int intMinValue = int.MinValue;
@@ -329,7 +357,9 @@ bool isWhiteSpace = char.IsWhiteSpave(myChar);
 bool isDigit = char.IsDigit(myChar);
 bool isPunctuaction = char.IsPunctuaction(myChar);
 ```
+
 Exemple:
+
 ```cs
 // we can use the deggub mode, and hover the mouse pointer over to see the values stored
 int intMaxValue = int.MaxValue; // 21,474,883,647 for an int
@@ -344,7 +374,8 @@ bool isLetter = char.IsLetter(userSelection); // true
 
 Console.ReadLine(); // this is used just to stop the debbug here 
 ```
-**Working with Dates**
+
+##### Working with Dates #
 
 DateTime, someDateTime, TimeSpan
 
@@ -355,7 +386,9 @@ DateTime TwoDaysTime = someDateTime.AddDays(2);
 DayOfWeek day = someDateTime.DayOfWeek;
 bool isDST = someDateTime.IsDaylightSavingTime();
 ```
+
 Exemple:
+
 ```cs
 // instanciate some dates, we choose
 DateTime hireDate = new DateTime(2022,3,28,14,30,0);
@@ -387,7 +420,7 @@ Console.WriteLine(endHour.ToShortTimeString());
 // 01:27
 ```
 
-**Converting Between Types**
+###### Converting Between Types #
 
 Implicit conversion\
 `int a = 123456789;`\
@@ -400,6 +433,7 @@ Casting (Explicit conversion)\
 Helpers
 
 Exemple:
+
 ```cs
 int numberOfhoursWorked = 165;
 long veryLongMonth = numberOfhoursWorked;// ok
@@ -411,7 +445,8 @@ int x = (int) d; // ok
 
 int intVeryLongMonth = (int) veryLongMonth;
 ```
-**Implicit Typing**
+
+##### Implicit Typing #
 
 |Explicit typing| Implicit typing|
 |---|---|
@@ -425,9 +460,10 @@ We cant't create a `var` type without a value.
 
 exe: `var employeeAge; // it will not compile`
 
-#### Adding Decision and Iteration Statements in C#
+#### Adding Decision and Iteration Statements in C# ####
 
 *Boolean Values:*
+
 - `True` or `false`
 - `bool` type
 - Boolean operators:
@@ -448,6 +484,7 @@ exe: `var employeeAge; // it will not compile`
 ---
 *if statements:*\
 Structure:
+
 ```cs
 if(some Boolean expression){
     //Other statements
@@ -464,7 +501,9 @@ if(some Boolean expression)
 else
     //Other statements ;
 ```
+
 For multiple conditions
+
 ```cs
 if(Boolean expression)
 {
@@ -479,9 +518,11 @@ else
     //Statement
 }
 ```
+
 ---
 *switch statement*\
 Structure:
+
 ```cs
 switch(expression)
 {
@@ -510,7 +551,9 @@ switch()
         break; 
 }
 ```
+
 Some rules:
+
 - Works for most data types
 but not float and double
 adding interations
@@ -518,24 +561,29 @@ adding interations
 - Each case must be unique
 - First "true" will get executes (top to bottom)
 - Default can be placed wherever we cant, always evaluated last
+
 ---
 
-*Iterations*
+##### Iterations #
+
 - Continue exexuting a task (looping)
 - Often used in comination with a counter
 - Ask inout until stop is reached
 - Keep reading files from disk
 
 Loop Options in C#:
+
 - `while`
 - `do-while`
 - `for`
 
 A while loop:
+
 - Condition is tested before the loop runs
 - Statement will get execuutes as long as the expression is true
 - Braces are required if more than one statement must be executes
 - We can create infite moops!
+
 ```cs
 while (Boolean expression)
 {
@@ -575,22 +623,28 @@ while(true)
     Console.WriteLine(DateTime.Now);
 }
 ```
+
 ---
 A do-while loop:
+
 - The statement is executes at least once
 
 Structure:
+
 ```cs
 do {
     //statements
 }
 while(Boolean expression)
 ```
+
 ---
 A for loop:
+
 - less fragile
 
 Structure:
+
 ```cs
 for(initiatization;Bollean;iterator)
 {
@@ -614,19 +668,22 @@ for(int i =0;i < max;i++)
 
 
 ```
-#### Methods
+
+#### Methods #
 
 A way to group and reuse code.
 
-**Undestanding Methods**
+##### Undestanding Methods #
 
 ~~ Function or subroutines
+
 - Code block
-- Receives parameters (arguments) and returns value 
+- Receives parameters (arguments) and returns value
 - Readable code and code reuse
 - Declared within a class or struct
 
 Structure:
+
 ```cs
 <access modifier><return type> Method_name(Paremeters)
 {
@@ -639,14 +696,18 @@ public int AddTwoNumbers(int a, int b){
     return a + b; //stops the execution
 }
 ```
+
 Method without a Return Value
+
 ```cs
 public void DisplaySum(int a, int b){
     int sum = a + b;
     Console.WriteLine("The sum is " + sum);
 }
 ```
+
 Invoking a Method
+
 ```cs
 //We can pass arguments: values for the parameter(s)
 ...
@@ -655,9 +716,11 @@ DisplaySum(3,52);
 int result = AddTwoNumbers(55,44);
 ...
 ```
+
 Creating a Method
 
-First on the same Program.cs 
+First on the same Program.cs
+
 ```cs
 int amount = 1234;
 int months = 12;
@@ -689,11 +752,13 @@ static int CalculateYearlyWage(int monthlyWage, int numberOfMonthsWorked)
     return monthlyWage * numberOfMonthsWorked;
 }
 ```
+
 ---
 Adding a Helper File\
 We will refactor (organize, maintaining the overall functionality) or code, starting by creating a Class.
 
 We will add a new file to our project, called *Utilities.cs*. Once created using Visual Studio we get this template:
+
 ```cs
 using System;
 using System.Collections.Generic;
@@ -708,7 +773,9 @@ namespace BethanysPieShopHRM
     }
 }
 ```
+
 Now we will start working with Classes that are not present on the same file.
+
 ```cs
 //Utilities.cs
 ...
@@ -730,7 +797,9 @@ namespace BethanysPieShopHRM
     }
 }
 ```
+
 Now we can invoke the created class, by using the correct syntax:
+
 ```cs
 //This will allow access to the Class
 using BethanysPieShopHRM;
@@ -744,6 +813,7 @@ Console.WriteLine($"Yealy wage: {yearlyWage}");
 
 Console.ReadLine();
 ```
+
 ---
 Calling the Correct Method
 
@@ -754,6 +824,7 @@ Calling the Correct Method
 Method Overloading: When we have method with the same name, but with differet number or type of parameters.
 
 exe:
+
 ```cs
 DisplaySum()
 
@@ -789,6 +860,7 @@ public static double CalculateYearlyWage(double monthlyWage, double numberOfMont
     return monthlyWage * numberOfMonthsWorked + bonus;
 }
 ```
+
 ---
 Understanding Variable Scope
 
@@ -797,9 +869,10 @@ Understanding Variable Scope
 - Global variables are shared for all files
 
 More options with Methods
+
 - Optional parameters
-    - Sepcify default values for one or more paremeters
-    - Caller can omit the optional ones
+  - Sepcify default values for one or more paremeters
+  - Caller can omit the optional ones
 
     Method with optional parameters
 
@@ -810,6 +883,7 @@ More options with Methods
         return sum;
     };
     ```
+
     Calling the method
 
     ```cs
@@ -819,17 +893,20 @@ More options with Methods
     ```
 
 - Named arguents
-    - Not required to follow order of parameters
-    - One or more parameters can have a name defined when invoking the method
+  - Not required to follow order of parameters
+  - One or more parameters can have a name defined when invoking the method
 
     Method with parameters
+
     ```cs
     public static AddNumbers(int a, int b)
     {
         ...
     };
     ```
+
     Using named arguments
+
     ```cs
     AddNumbers(b:10,a:20);
     //We can also use variables when calling
@@ -839,7 +916,6 @@ More options with Methods
     ```
 
 - Expression-bodied syntax // Or arrow function for JS
-    - 
 
 ```cs
 public static void UsingExpressionBodiedSyntax()
@@ -855,13 +931,16 @@ public static void UsingExpressionBodiedSyntax()
 
 public static int CalculateYearlyWageExpressionBodied(int bonus,int monthlyWage,int numberOfMonthsWorked) => monthlyWage * numberOfMonthsWorked + bonus;
 ```
+
 ---
 Introducing the Main Method (is unique)
+
 - Entry method which gets called upon start of the app ( by convention called Program.cs)
 - Gets created implicitly now
 - Top-level statements is default way
 
 Exemple from Current and pre-C#10
+
 ```cs
 //Program.cs (current), has Top-Level statements
 Console.WriteLine("Hello, world!");
@@ -879,9 +958,11 @@ namespace ConsoleApp1
     }
 }
 ```
-#### Working with strings
+
+#### Working with strings #
 
 Recap for Strings:
+
 ```cs
 string firstName = "Bethany"; // type
 string lastName = "Smith";
@@ -892,7 +973,9 @@ userName = userName.ToLower();
 
 userName = "";//identical to string.Empty
 ```
+
 Some Methods for strings
+
 |Syntax|Explanation|
 |---|---|
 |`int l = myString.Length;`| Get the length of the string|
@@ -902,7 +985,9 @@ Some Methods for strings
 |`string s = myString.Replace("a","b");`|Replace "a" with "b" in the string|
 |`strin sub = myString.Substring(1, 3);`|Get a part of a string(zero-based)|
 |`myString.Trim();`|Removes blank spaces|
+
 Concatenating Multiple Strings
+
 ```cs
 string s1 = "Learning C# "; //notice the extra spacce at the end
 string s2 = "is awesome";
@@ -911,7 +996,9 @@ string s3 = s1 + s2;
 string s3 = String.Concat(s1,s2);
 //Output: "Learning C# is awesome" 
 ```
+
 Better readability
+
 ```cs
 string employeeName = "Bethany";
 int age = 34;
@@ -926,15 +1013,20 @@ string greetingText =
 // String Interpolation
 string greetingText = $"Hello {employeeName}, you are {age} years";
 ```
+
 ---
 Using Escape Characters
+
 - Always start with a \
+
 ```cs
 Console.WriteLine("Here are the employee details: \nBethany \tSmith");
 // \n for a new line
 // \t for a tab space
 ```
+
 - Representing a File Path
+
 ```cs
 // Use a backslash
 string escapedFilePath = "C:\\Documents\\readme.txt"
@@ -943,6 +1035,7 @@ string verbatimFilePath = @"C:\Documents\readme.txt"
 ```
 
 Testing Strings for Equality
+
 ```cs
 // C# is case sensitive
 string firstName = "Bethany"
@@ -956,7 +1049,9 @@ bool b = firstName.ToUpper() == anotherString.ToUpper();
 
 // OR ToLower();
 ```
+
 Parsing from String to Other Types
+
 ```cs
 //A read method avveprs strings
 string w = Console.ReadLine();
@@ -973,26 +1068,31 @@ if (bool.TryParse(enteredText, out bool b))// Input, Output
     Console.WriteLine($"The value is {b}")
 }
 ```
-#### Creating a Class and Objects
+
+#### Creating a Class and Objects #
 
 Typical models ( used several times)
+
 - Employee
 - Customer
 - Message
 - Transaction
 
 Custom Types
+
 - Class
 - Struct
 - Record
 
 Classes in C#
+
 - Blueprint of an object
 - Denifes data and functionality to work on its data
 - Created using class keyword
 - Foundation of OO (Object-Oriented)
 
 The Class Template:
+
 ```cs
 public class MyClass // public access mosdifier
 {
@@ -1005,7 +1105,9 @@ public class MyClass // public access mosdifier
     }
 }
 ```
+
 Contents of a Class
+
 - Fields - Class level variables that contain data
 - Methods - A functionality that will work on the data, perform actions a change in state
 - Properties
@@ -1013,9 +1115,11 @@ Contents of a Class
 
 *Creating the Employee Class*
 What defines an employee:
+
 - Indentity: Name
 - Attributes: Age, Wage
 - Behaviours: Get paid, Perfom work
+
 ```cs
 public class Employee
 {
@@ -1028,17 +1132,21 @@ public class Employee
     }
 }
 ```
+
 Access Modifiers
+
 - `public` - available outside of the Class
 - `private` - only accessible whit in the Class
 - `protected` - available for the Class and it's inheritors
 
 Demo:
+
 - Create a new application, my case Console type
 - Name it BethanysPieShopHRM2
 - Add a new Class named Employee.cs
 
 Exemple:
+
 ```cs
 //Fields
 public string firstName;
@@ -1083,11 +1191,13 @@ public void DisplayEmployeeDetails()
 }
 
 ```
+
 ---
 Using Objects
 
 We can picture a Class as a blueprint, where the color it's a field. An Object would be a copy of the blueprint with a different color.
-```
+
+```md
 Class
     |----Object1
     |    Color:orange
@@ -1096,10 +1206,13 @@ Class
     |----Object3
     |    Color:green
 ```
+
 Creating a New Object
+
 ```cs
 Employee employee = new Employee();
 ```
+
 |Left side|Rigth side|
 |---|---|
 |`Employee employee = new Employee();`|
@@ -1108,11 +1221,13 @@ Employee employee = new Employee();
 |Create a variable: Variable type Varaible name|new Object of Class Employee()|
 
 Constructors
+
 - Called when instantiating an object
 - Default or custom
 - Used to set initial valuesss
 
 Adding a Constructor with Parameters
+
 ```cs
 public class Employee
 {
@@ -1131,7 +1246,9 @@ public class Employee
 Employee employee = new Employee("Bethnay", 35);
 //Using new keyword to generate an object of the Employee type
 ```
+
 The Default Constructor
+
 ```cs
 public class Employee{
     public Employee()
@@ -1139,19 +1256,26 @@ public class Employee{
 }
 //Created when not define no other constructors
 ```
+
 Shorthand to Create an Instance
+
 ```cs
 Employee employee = new ("Bethany",35);
 ```
+
 Call methods
+
 |Code|Meaning|
 |---|---|
 |`Employee employee = new Employee();`| Instantiating the object|
 |`employee.PerformWork();`|Invoking a method|
 |`employee.firstName = "Bethany";`| Changing a field|
 |`int wage = employee.RecieveWage();`|Returning a value from method|
+
 ---
+
 Using Primary Constructors
+
 ```cs
 /* A new way to write a constructor where we don't need to specify
 *  and variables are already available
@@ -1162,6 +1286,7 @@ public class Employee (string name, int ageValue)
 ```
 
 Demo
+
 ```cs
 //Employee.cs
 
@@ -1221,16 +1346,17 @@ Bethany Smith has received a wafe of 200 for 8 hour(s) of work.
 Wage paid (message from Program): 200
 */
 ```
-#### Value Types and Reference Types
+
+#### Value Types and Reference Types #
 
 - Value types
-    - Int, float, double, char
-    - Fixed size, llocated by compiler on stack
-    - Value is copied to this memory location 
+  - Int, float, double, char
+  - Fixed size, llocated by compiler on stack
+  - Value is copied to this memory location
 - Reference types
-    - Allocated on heap
-    - Stack contains just a pointer to the memory address
-    - Classes re reference types
+  - Allocated on heap
+  - Stack contains just a pointer to the memory address
+  - Classes re reference types
 
 ```cs
 //Value types
@@ -1256,23 +1382,26 @@ testEmployee.firstName = "Gill";
 //We display the values, by calling the Display method
 testEmployee.DisplayEmployeeDetails();
 ```
+
 ---
 Passing Data to Methods
 
 Passing Parameters
+
 - By value: Default if nothing else is specified
-    - A copy is created for the method
-    - Value in caller stays the same
+  - A copy is created for the method
+  - Value in caller stays the same
 - By reference: Require use of the ref keyword on parameters
-    - A reference to the value is passed
-    - no copy is made
-    - Changes made in method affect original values
-    - ref keyword is used
+  - A reference to the value is passed
+  - no copy is made
+  - Changes made in method affect original values
+  - ref keyword is used
 As explanation if I have a `int b` and use `ref b` on a method, if the `b` changes the 'original' `b` also changes.
 
 Allows methods to change original valeus of the parameters.
 
 Before a `ref` is invoked all ref values must be initialized (given a value).
+
 ```cs
 int a = 33;
 int b == 44;
@@ -1287,9 +1416,12 @@ public int AddTwoNumbers(int a, ref int b)
 // b is now 54
 // Since with red I changed the reference of b and not just copied it's value
 ```
+
 As `ref` keyword we also have `out`
+
 - Out values don't need to be initialized (given a value, outside the method)
 - multiple values can be returned
+
 ```cs
 int a = 33;
 int b;
@@ -1303,9 +1435,12 @@ public int AddTwoNumbers(int a, out int b, out int c)
     return sum;
 }
 ```
+
 ---
 Strings Are Reference Types Too
+
 - They point to the actually string in memory, so on the heap
+
 ```cs
 string a = "Hello";
 string b;
@@ -1314,11 +1449,13 @@ b += " world"; //This created a new string thay b will point to, that takes refe
 Console.WriteLine(a);//Output: Hello
 Console.WriteLine(b);//Output: Hello world
 ```
+
 Strings are immutable.(when 'changed' a new is just created and we can point to it)
 
 String immutability can have a perfomance impact! Solution:
 
 `StringBuilder`
+
 ```cs
 StringBuilder stringBuilder = new StringBuilder();
 stringBuilder.Append("Employee list");
@@ -1327,16 +1464,19 @@ stringBuilder.AppendLine("George Jones");
 stringBuilder.AppendLine("Gill Cleeren");
 string list = stringBuilder.ToString();
 ```
+
 Working with Custom Types (.NEt and C#)
+
 - Value types
-    - Enumeration
-    - Struct
+  - Enumeration
+  - Struct
 - Reference types
-    - Class
-    - Interface
-    - Delegate
+  - Class
+  - Interface
+  - Delegate
 
 Organizing Types in Namespaces
+
 ```cs
 // Exe
 System
@@ -1347,10 +1487,13 @@ System
 │   ├── System.IO.FileSystem
 │   ├── System.IO.Compression
 ```
+
 The `using` keyword
+
 - A `using` statement only brings the types within the specified namespace, not the ones in nested namespaces
 
 Global Usings (commonly used)
+
 ```cs
 // <auto-generated>
 global using global::System;
@@ -1361,23 +1504,29 @@ global using global::System.Net.Http;
 global using global::System.Threading;
 global using global::System.Threading.Tasks;
 ```
+
 Demo: (Visual Studio Code)
+
 - Browsing for exixting types
 - suing a custom type
-- Understanding global 
+- Understanding global
 
 Visual Studio Code -> View -> Object Browser -> RigthClick & Namespaces
 
 Bringing packages to our Projects\
 RigthClick on Project directory -> Manage NuGet Packages
+
 - Browse the wanted package and intall
 - It will be installed under Dependencies
 - Must use ´using´ statement to bring it in to be used
+
 ---
 Creating Enumerations
+
 - Named constants for improved readability
 - Value type (integer value with a name)
 - Uses `enum` keyword
+
 ```cs
 enum EmployeeType
 {
@@ -1387,7 +1536,9 @@ enum EmployeeType
     StoreManager//3
 }
 ```
+
 Using enumeration (or a new custom type)
+
 ```cs
 //EmployeeType.cs
 
@@ -1404,12 +1555,15 @@ namespace BethanysPieShopHRM2
 }
 //It can now be used in other classes or our program
 ```
+
 ---
 Working with Struct
+
 - Value type
 - Represents a custom data structure
 - Can be new'ed
 - Can contain methods and other members
+
 ```cs
 struct WorkTask
 {
@@ -1423,7 +1577,9 @@ struct WorkTask
     }
 }
 ```
+
 Like `enum`, enumerate, we create it with a new Class file.
+
 ```cs
 namespace BethanysPieShopHRM2
 {
@@ -1440,15 +1596,18 @@ namespace BethanysPieShopHRM2
     }
 }
 ```
-#### More with Classes and Custom Types
 
-**Grouping Classes in Namespaces**
+#### More with Classes and Custom Types #
+
+##### Grouping Classes in Namespaces #
 
 Namespaces
+
 - Keep class names separate
 - Used throughout .NET
 - Organize out own classes in custom namespaces
 - Make namespace available through `using` directive
+
 ```cs
 namespace BethanysPieShop.HR // just a string; Rootnamespace.Custom_Namedspace
 {
@@ -1462,7 +1621,9 @@ namespace BethanysPieShop.HR; //All code on this file is part of the namespace
 public class Employee
 { }
 ```
+
 Working with namespaces
+
 ```cs
 //If we create a folder inside out project and add a new class, 
 // by convetion it takes the name concatenated
@@ -1475,12 +1636,15 @@ Customer... ;
 
 BethanysPieShopHRM2.Accounting.Customer customer = new BethanysPieShopHRM2.Accounting.Customer();
 ```
+
 ---
 Static Data
+
 - It's defined on the class level and not on the obj level, shared with all objs
 - Static methods can only work with static Data
 
 - A static class in C# is a class that cannot be instantiated (i.e., you cannot create an object of it). It is used to group related members such as methods, properties, or other types (like enums) that don’t need an instance to operate.
+
 ```cs
 public class Emplopyee
 {
@@ -1501,7 +1665,9 @@ static void Main(string[] args){ // on main file, program.cs
 
 }
 ```
+
 A `region` is a way to collapse code:
+
 ```cs
 #region Name of the region
 
@@ -1510,11 +1676,13 @@ Code
 Code
 #endregion
 ```
+
 By clicking F12 when cursor over method it brings us to their definition
 
 ---
 Working with null
 (Stack --- Heap)
+
 ```cs
 Employee employee;
 //employee is null, variable created on the stack but not instantiated
@@ -1528,9 +1696,12 @@ employee.PerformWork();//runtime error: NullReferenceException
 //We can also break the reference to the obj by declaring the variable null
 employee = null;
 ```
+
 Nullable Value Type
+
 - represents the actually underligning type + the null
 - if we don't have a value but need an int type, int nullable value type
+
 ```cs
 int? a = 10;
 int? b = null;
@@ -1539,16 +1710,21 @@ if (b.hasValue)//check
     Console.WriteLine("We have a balue");
 }
 ```
+
 When We use Null values
+
 - We can add `.Value` ather the variable to get the value of the nullable
-- OR 
+- OR
 - we can use null coalescing operator
+
 ```cs
 hourlyRate = rate;
 hourlyRate = rate ?? 10; //If rate is null use the right hand-side
 ```
+
 ---
 Garbage Collection
+
 - When objects are created but lose their connections or references they stay on the heap memory
 - Garbage Collctor will remove those objects that do not run on the application
 - Cleaning up unreachable objects
@@ -1564,16 +1740,18 @@ Visual Studio - Diagnostic Tool
 
 GC.Collect(); // Will force a clear
 ```
+
 ---
 Using a Class from an External Library
-- .NET Class Lib
-    - Console class
-- Custom libs
-    - WageCalculation class
-- Out application
-    - using NameSpace;
 
-Visual Studio - 
+- .NET Class Lib
+  - Console class
+- Custom libs
+  - WageCalculation class
+- Out application
+  - using NameSpace;
+
+Visual Studio -
 Project - RigthClick -> Add -> Project Reference... -> Browse -> FilePath to the .dll
 Under Dependencies we will add an extra node
 
@@ -1581,10 +1759,12 @@ To rewrite a same value we can do CTRL + R CTRL + R and apply
 
 ---
 C# Records (C#12)
+
 - New reference type
 - Can replace class
 - Aimed at "just" containing data, can contain other members though
 - Come with additional functionality built-in (generated)
+
 ```cs
 public record Account;
 public record class Account;
@@ -1595,7 +1775,9 @@ public record Account(string AccountNumber);//Positonal record
 
 Account newAccount = new("123-456");
 ```
+
 Why records?
+
 - Passing around "just" data
 - Used for data that shouldnt be changed after creation
 
@@ -1611,9 +1793,11 @@ emp1.FirstName = "Gill"; //error
 //for classes we get a false, for records we get a true
 //way to verify if two objs have a same value
 ```
+
 We change the class Acccount to a Record, we can since we "only" store data
 
 Exe:
+
 ```cs
 //Normal record
     public record Account
@@ -1633,28 +1817,37 @@ Exe:
     //Positional record
     public record Account(string AccountNumber);    
 ```
-#### Arrays and Lists
+
+#### Arrays and Lists #
+
 Understanding Arrays
+
 - Use most when amount of variables unknownish
 
 Working with Lits of Data
+
 - Arrays
 - Collections
 
 Arrays in C#
+
 - Data structure to store multiple variables
 - All variables must have the same type (can be object)
 - Accessed through use of index (start 0)
+
 ```cs
 // Type of array    Variable Name
 int[] allEmployeeIds;
 
 DateTime[] startDates;
 ```
+
 Instantiating the Arrays
+
 - a reference type = stored on the heap
 - Creating happens upon using new
 - Size set upon cr- Arrays are zero-based
+
 ```cs
 int[] allEmployeeIds = new int[4];// size of the array
 // here all employees are just a variable that point to the array
@@ -1663,14 +1856,18 @@ int[] allEmployeeIds = new int[4];// size of the array
 int size = int.Parse(Console.ReadlLine());
 int[] employeeIds = new int[size];
 ```
+
 Populating the Array
+
 ```cs
 int[] allEmployeeIds = new int[4] {11,44,179,161};
 int[] allEmployeeIds = new int[4] {11,44,179};//CompilerError; wrong size
 int[] supportStaffIds = new int[] {11,44};
 // This is ok, since size is the same as paramenters passed
 ```
+
 Accessing Element within the Array
+
 ```cs
 allEmployeeIds[0] = 123;
 
@@ -1680,8 +1877,11 @@ int secondEmployeeId = allEmployeeIds[1];
 allEmployeeIds[2] = 33; //ok, still inside the size
 allEmployeeIds[7] = 33; //RuntimeException; index doesnt ecist
 ```
+
 `foreach` loop & `Random()` method
--  loops over all the element in a collection 
+
+- loops over all the element in a collection
+
 ```cs
 //An array of Employee type obj
 Employee[] employees = new Employee[7];
@@ -1698,13 +1898,16 @@ foreach(Employee e in employees )
     e.ReceiveWage();
 }
 ```
+
 The Array Base Class - a reference type so goes to the heap, no real place
+
 - `CopyTo();` method to copy arrays
 - `Sort();` method to sort the values of an int type
 - Reverse() method to reverse order of elements
 - `Length` property gives number of elements
 
 Demo:
+
 ```cs
 ArraySort(employeeIds);
 
@@ -1712,8 +1915,11 @@ int[] employeeIdsCopy = new int[length];
 
 employeeIds.CopyTo(employeeIdsCopy,0) // copy starting from zero element here
 ```
+
 Working with Collections
+
 - List
+
 ```cs
 //Creating a List
 List<int> employeeIds = new List<int>(); //Type parameter
@@ -1737,44 +1943,48 @@ employeeIds.Clear();// clears the list
 
 employees.Insert(_index, _element);
 ```
-#### Fundamentals of Object-orientation
+
+#### Fundamentals of Object-orientation #
 
 Object-oriented Programming in C#
 
 Structure:
+
 - Classes
 - Objects
 - Methods
 - Properties
 
 The Four Pillars of OO
+
 - Encapsulation
-    - Containing information inside object
-    - Only centain information is exposed
-    - Hides internal implementaion and data
-    - Avoid data corruption
-    - Private & public
+  - Containing information inside object
+  - Only centain information is exposed
+  - Hides internal implementaion and data
+  - Avoid data corruption
+  - Private & public
 - Abstraction
-    - Abstract representation of program
-    - Only mechanisms useful for other objects are revealed
-    - Implementation is hidden
-    - Making changes becomes easier
+  - Abstract representation of program
+  - Only mechanisms useful for other objects are revealed
+  - Implementation is hidden
+  - Making changes becomes easier
 - Inheritance
-    - Classes can reuse functionality from others
-    - Relation between classes
-    - Lower development time because of reusability
+  - Classes can reuse functionality from others
+  - Relation between classes
+  - Lower development time because of reusability
 - Polymorphism
-    - Share behaviour but van be in more than one form
-    - Child can be ised like its parent
-    - Correct method will be used based on execution
+  - Share behaviour but van be in more than one form
+  - Child can be ised like its parent
+  - Correct method will be used based on execution
 
 ---
 In order to change private fiedls (variables) from a class we need a method that can get along with the the number of fields.
 We can instead use Properties, that will enable the interaction with private fields. Allows us to expose data but without showing the behind logic.
 
-**Encapsulation**
+##### Encapsulation #
 
 Introducing Properties
+
 ```cs
 public class Employee
 {
@@ -1788,13 +1998,16 @@ public class Employee
     }
 }
 ```
+
 C# Properties
+
 - Wrap data (fields) of a class <!-- Access only the allowed data-->
 - Hide implementation
 - Define get and set implementation
 <!-- Convention for methods, PascalCase it is != than camelCase -->
 
 Using Properties
+
 ```cs
 Employee employee = new Employee(); // Instantiation the object
 
@@ -1802,7 +2015,9 @@ employee.FirstName = "Bethany" // Setting a value through a property
 
 int empFirstName = employee.FirstName; // Getting the valuue through a property
 ```
+
 Demo:
+
 ```cs
 // Employee.cs
 // public string firstName; // Always access and can change outside
@@ -1831,9 +2046,11 @@ string fn = bethany.FirsName; // Property but the get{} part, it will return the
 
 
 ```
+
 Properties are to access data that are encapsulated inside the Class
 
 I can also stop changes from outside by doing a `private` on the `set`, that way no one can set a value from the outside of the class. But I can still get the value, since `get` is not `private`.
+
 ```cs
 private double wage;
 
@@ -1846,6 +2063,7 @@ public double Wage
     }
 }
 ```
+
 It's a good idea to change the constructor to use properties instead of fields.
 
 ```cs
@@ -1876,10 +2094,13 @@ public Employee (string firstName, string lastName, string emaim, DateTime birth
 
 // Encapsulating the Data
 ```
+
 ---
-**Inheritance**
+
+##### Inheritance #
 
 Using Inheritance in C#
+
 - Class gets data and functionality from parent
 - Parent (or base) and derived class
 - Reuse code
@@ -1887,6 +2108,7 @@ Using Inheritance in C#
 - Can be one or more levels deep
 
 Creating a Base and a Derived Type
+
 ```cs
 //Structure
 public class BaseClass
@@ -1915,7 +2137,9 @@ public class Manager: Employee
     }
 }
 ```
+
 Revisiting Access Modifiers
+
 - public - can be accessed by DerivedClass and others
 - private - cannot be accessed
 - protected - can be accessed ONLY by inherited classes
@@ -1943,6 +2167,7 @@ public class Manager: Employee
     }
 }
 ```
+
 We will need a Contructor when creating a class. We use base: after parentheses to define the accepted values from the parent class.
 
 ```cs
@@ -1976,11 +2201,14 @@ Employee mary = new Manager("Mary", "Jones","maey@email.com", new DateTime(1965,
 // nested properties, inside constrctors having custom types
 
 ```
+
 ---
 Polymorphism
+
 - Override a base class method with a new implementation
 - "Poly" & "morph" - many & change
 - Uses `virtual` and `override` keywords
+
 ```cs
 // Employee
 public class Employee
@@ -2003,13 +2231,16 @@ public class Manager: Employee
 
 // ATTENTION to the base type that is called and the avaiable methods for it
 ```
+
 ---
 Interfaces (a type)
+
 - Define a contract that must be implemented by classed that use it
 - Can't be instantiated, they are just contract there is no implementaion in the methods
 - Names start with an "I" - convention
 - Useful to make sure all available methods can be used( have implementaion) and can be polymorphed
 - Recommended to use as the type when creating a new object
+
 ```cs
 //Structure
 public interface IEmployee
@@ -2018,7 +2249,9 @@ public interface IEmployee
     int ReceiveWage();
 }
 ```
+
 Implementing an Interface
+
 ```cs
 public void Manager: IEmployee
 {
@@ -2032,7 +2265,9 @@ public void Manager: IEmployee
     }
 }
 ```
+
 Demo:
+
 ```cs
 //IEmployee.cs
 internal interface IEmployee
@@ -2051,15 +2286,19 @@ internal class EMployee: IEmployee
 }
 // All the methods have an implementation inside the Employee Class
 ```
+
 ---
-#### Testing C# Code
+
+#### Testing C# Code #
 
 Debugger
+
 - Run in debug mode
 - Breakpoints
 - Stepping through the code
 
 Debugger Commands
+
 - F5: start debugging
 - F10: Step over
 - F11: Step Into
@@ -2075,32 +2314,37 @@ Output window - errors or exceptions
 
 ---
 
-**Writing a Unit Test**
+##### Writing a Unit Test #
 
 Introducing Unit Tests
+
 - Code to test other code
 - Small components of the application
 - Validate value
 - Isolare part of the code
 
 Advantages of Unit Tests
+
 - Find bugs
 - Change wothout fear of breaking something
 - Improve quality
 - Documentation of the code
 
 Creating a Unit Test Project
+
 - We will need a separate project - xUnit Test Project, as a template
 
 For us to use out Test on our original code, we will need to create a reference to the Test .
 Add Project Reference
 
 Structure of a Unit Test
+
 - Arrange
 - Act
 - Assert
 
 exe:
+
 ```cs
 public class EmployeeTests
 {
@@ -2118,9 +2362,11 @@ public class EmployeeTests
     }
 }
 ```
+
 Running Tests with Test Explorer - Test Explorer window
 
 Demo:
+
 ```cs
 /**
     We will crete an Unit Test for PerformWork() for this exemple.
@@ -2186,20 +2432,24 @@ namespace BethanysPieShopHRM2.Tests
     }
 }
 ```
-#### Reading from and Writting to Files
+
+#### Reading from and Writting to Files #
 
 Setting up the application's structure - can find m13 folders
 
 Working with File and Directories
+
 - `System.IO namespace` - File, Directory and Path class
 - `FileInfo and DirectoryInfo` are alternatives
 
 Availabe functionalities for `System.IO.Directory Class`
+
 - `CreateDirectory(path)`
 - `Exists(path)`
 - `Delete(path)`
 
 Availabe functionalities for `System.IO.File Class`
+
 - `Move(source, destination)`
 - `Copy(source, destination)`
 - `Exist(path)`
@@ -2235,13 +2485,16 @@ internal class Utilities
 
 }
 ```
+
 ---
 Reading and Writing Text
+
 - `File` Class
 - `FileStream`
 - `StreamReader & StreamWriter`
 
 exe:
+
 ```cs
 string path = @"D:\sample.txt"
 
@@ -2251,7 +2504,9 @@ lines = FileReadAllLines(path);
 
 File.WriteAllText(path, text)
 ```
+
 Demo:
+
 ```cs
 internal static void SaveEmployees(List<Employee> employees)
 {
@@ -2269,11 +2524,15 @@ internal static void SaveEmployees(List<Employee> employees)
 }
 // The load is longer, not hard. check the saved files 
 ```
+
 The `is` keyword can check if an object is the correct type. `if ( employee is Manager){...}`
 
---- 
-#### Handling Exceptions
+---
+
+#### Handling Exceptions #
+
 Understanding Exceptions
+
 - Divide by 0
 - File not accessible
 - Incorrect permissions
@@ -2281,6 +2540,7 @@ Understanding Exceptions
 - ...
 
 Using a try/catch Block
+
 ```cs
 try
 {
@@ -2292,9 +2552,11 @@ catch(Exception ex)
     throw;
 }
 ```
+
 Add it where things can go wrong! Find more on the documentation.
 
 Inspectiing the Exepetion Details
+
 - Message
 - InnerException
 - StackTrace
@@ -2312,7 +2574,9 @@ catch(Exception ex)
     Console.WriteLine(ex.StackTrace);
 }
 ```
+
 Catching Several Types of Exceptions
+
 ```cs
 // We can write several like this
 try
@@ -2336,7 +2600,9 @@ catch(Exception ex)
     //This will be invoked if another type of exception occurs
 }
 ```
+
 Using `finally`
+
 - It will always execute, even if we end up on a `catch` block
 
 ```cs
@@ -2353,30 +2619,32 @@ finally
     //This will always execute
 }
 ```
-#### Next Steps in C#
+
+#### Next Steps in C #
+
 - Object-orientation
-    - go in-dept 
-    - Design of a real system
+  - go in-dept
+  - Design of a real system
 - Working with data in a Database
-    - connecting with a database locally or in the cloud
-    - ADO.NET or Entity Framework Core
-    - Querying or editing data
-- LING 
-    - Language-Integrated Querry Language
+  - connecting with a database locally or in the cloud
+  - ADO.NET or Entity Framework Core
+  - Querying or editing data
+- LING
+  - Language-Integrated Querry Language
 -Async coding
-    - Avoid blocking the application while code runs
-    - external API use
+  - Avoid blocking the application while code runs
+  - external API use
 - Application Development
-    - Desktop
-        - WPF (Windows Presentation Foundation)
-        - WinForms
-    - Web
-        - ASP.NET Core
-        - MVC
-        - Razor Pages
-        - Blazor
-    - API
-        - ASP.NET Core
-    - Mobile
-        - Xamarin
-        - Maui
+  - Desktop
+    - WPF (Windows Presentation Foundation)
+    - WinForms
+  - Web
+    - ASP.NET Core
+    - MVC
+    - Razor Pages
+    - Blazor
+  - API
+    - ASP.NET Core
+  - Mobile
+    - Xamarin
+    - Maui

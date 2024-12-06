@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Code\\Learn\\Blazor\\BlazorApp1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3E0F75E8-ABA3-43A9-87F4-10324944E374}|BlazorApp1\\BlazorApp1.csproj|d:\\code\\learn\\blazor\\blazorapp1\\blazorapp1\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3E0F75E8-ABA3-43A9-87F4-10324944E374}|BlazorApp1\\BlazorApp1.csproj|solutionrelative:blazorapp1\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\Code\\Learn\\Blazor\\BlazorApp1\\BlazorApp1\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "BlazorApp1\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\Code\\Learn\\Blazor\\BlazorApp1\\BlazorApp1\\Properties\\launchSettings.json",
+              "RelativeToolTip": "BlazorApp1\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-12-06T10:37:33.551Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
