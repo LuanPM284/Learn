@@ -770,7 +770,7 @@ We can check that all components will be interactive, and can change the type of
 </html>
 ```
 
-### Work with Data
+## Work with Data
 
 We start a new project, name `BlazorMovieApp`.
 
