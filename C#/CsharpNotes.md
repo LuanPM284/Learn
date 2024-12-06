@@ -1215,9 +1215,9 @@ Employee employee = new Employee();
 
 |Left side|Rigth side|
 |---|---|
-|`Employee employee = new Employee();`|
+|`Employee employee = new Employee();`||
 |Employee employee|new Employee();|
-| `=` Assignment operator|
+| `=` Assignment operator||
 |Create a variable: Variable type Varaible name|new Object of Class Employee()|
 
 Constructors

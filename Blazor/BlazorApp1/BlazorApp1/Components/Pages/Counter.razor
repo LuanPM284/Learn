@@ -9,11 +9,27 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+<div class="m-3">
+    <input type="text" @oninput="HandleInput"/>
+    <p>@text</p>
+</div>
+
 @code {
     private int currentCount = 0;
-
+    [Parameter]
+    public int IncrementAmount { get; set; } = 1;
+    string text = "";
     private void IncrementCount()
     {
-        currentCount++;
+        currentCount+= IncrementAmount;
+    }
+    /** 
+    *   ChangeEnventArgs is an object, so we need to convert to string since text
+    *   is a string type field for that we have a property for this object called Value.
+    *   To avoid a compiler error of Null we add ! at the end
+    */ 
+    private void HandleInput(ChangeEventArgs e)
+    {
+        text = (string)e.Value!;
     }
 }
