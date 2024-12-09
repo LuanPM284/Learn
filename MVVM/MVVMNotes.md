@@ -1,11 +1,15 @@
 # Personal Notes
+
 ## Learning MVVM
+
 These are my personal notes on learning MVVM, the sources used are:
+
 - openclassrooms - [Développez votre première application Android](https://openclassrooms.com/en/courses/8150246-developpez-votre-premiere-application-android/8256880-structurez-l-application-avec-l-architecture-mvvm)
 - learn.microsoft - [Model-View-ViewModel (MVVM)](https://learn.microsoft.com/en-us/dotnet/architecture/maui/mvvm)
 - Youtube - [What is the MVVM pattern, What benefits does MVVM have?](https://www.youtube.com/watch?v=AXpTeiWtbC8&t=1s)
 
 ## openclassrooms (https://openclassrooms.com/en/)
+
 ### Structurez l’application avec l’architecture MVVM
 
 Architecture logicielle - patron/pattern d’architecture.
@@ -13,7 +17,6 @@ Architecture logicielle - patron/pattern d’architecture.
 Eviter du code spaghetti, du code sans interconnexions. Difficile à comprendre et à maintenir.
 
 ![Exemple](/MVVM/Code_Spaghetti_Exemple.jpg)
-
 
 Différents modèdeles existent comme MVC(Model, View, Control), MVI, MVP ou encore MVVM (préconisé par Google).
 
@@ -81,7 +84,6 @@ public class Question {
 ```
 
 Pour la partie qui concerne les données on dois adapter à la  façon dont ceux sont stockés. Ici c'est un exemple locale
-
 
 ```java
 // Data/QuestionsBank.java
@@ -163,6 +165,7 @@ Ce médiateur permet d'organizer les données de différentes sources. Permettan
 ![Exemple Pattern Repository](/MVVM/MVVM_Exemple_pattern_repository.jpg)
 
 "Un Repository permet donc de :
+
 - centraliser l’accès aux données ;
 - gérer à un endroit unique la logique permettant de définir quelle source de données utiliser."
 
@@ -186,11 +189,36 @@ public class QuestionRepository {
 #### Pattern ViewModel
 
 "Pour rappel, le pattern ViewModel a deux objectifs : 
+
 - Exposer des données, ou **états**, représentant les informations dont l’interface a besoin.
 - Fournir des fonctions correspondant aux **événements** qui ont lieu sur l’interface et qui nécessitent la modification des données."
 
 Ici dans notre exemple nous avons *ui* user interface, pour la partie View. Comportent:
+
 - `QuizFragment`;
 - `WelcomeFragment`  .
 
 La partie ViewModel aura comme nom *QuizViewModel*
+
+---
+
+Structure Example:
+
+```md
+Admin Page
+---
+Components/
+|--- ServiceRequest
+|--- ServiceRequestList
+|--- ServiceRequestListItem
+|--- ServiceRequestListItems
+|--- ServiceRequestManagement
+ViewModel/
+|--- ServiceRequestViewModel
+|--- ServiceRequestListViewModel
+|--- ServiceRequestListItemViewModel
+|--- ServiceRequestListItemsViewModel
+|--- ServiceRequestManagementViewModel
+
+Every ViewModel => Component
+```
