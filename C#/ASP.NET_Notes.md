@@ -327,7 +327,7 @@ Here first we find *NewProduct* object and then the *.Name* property.
 |Server| request |Browser|
 |---|---|---|
 |[BindProperty]<br> Product NewProduct { get; set;}|<= POST|<input name="NewProduct.Name" value = "Backpack"/\> <br> <input name="NewProduct.Name" value = "Backpack"/\>|
-|||
+||||
 
 #### MVC
 
