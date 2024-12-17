@@ -867,6 +867,20 @@ app.Run();
 
 We can always use both depending on the use.
 
+#### SignalR
+
+A technique mainly used to call methods on clients from a server application.(For a list or page update for example, without a refresh).
+
+The server application could be server rendered such as an MVC or Razor applications. Or API, gRPC.
+
+The class present on the server that facilitates this is called a *hub*.
+
+Using the `Hub` class, messages can be sent fto all/one/group clients.
+
+SignalR: uses Remote Prodecute Call
+
+Note recommended on most applications, only to send messages to update the UI.
+
 ```cs
 ```
 
