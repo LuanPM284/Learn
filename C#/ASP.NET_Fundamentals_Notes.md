@@ -881,11 +881,31 @@ SignalR: uses Remote Prodecute Call
 
 Note recommended on most applications, only to send messages to update the UI.
 
-```cs
-```
+### What to do Next
 
-```cs
-```
+Pick a category\
+Pick one technology from the category\
+Watch a fundamentals course\
+Check out Microsoft [documentation](https://learn.microsoft.com/en-us/aspnet/core/)\
+Code along with sample application\
+Start from scratch (create my own applicition)\
+Choose other technology from category
+Next category\
+signalR last
 
-```cs
-```
+- Frontend: Server-rendered
+  - MVC
+  - Razor Pages
+- Frontend: Client-rendered
+  - Blazor WebAssembly
+  - Blazor Server
+- Backend
+  - Web API
+  - gRPC
+- Supporting
+  - SignalR
+
+Testinf Backend Applications:
+
+- Web API: Swagger
+- gRPC: Test client (console application)
