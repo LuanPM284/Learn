@@ -606,13 +606,266 @@ We can start one on Visual Studio with a Blazor Web App.
 
 Default Rendering Mode: Static, it switches to WebAssembly once all is loaded.
 
-### APIs
+### Discoverin Backend API Applications
 
-```cs
+#### Backend API app
+
+Backend
+    - Web API
+    - gRPC
+
+An API has to be able to send and recieve data. We use serialization for that.
+
+We transform C# objects into a format that can be sent over the wire.
+
+An example: JSON
+
+```json
+{
+    "id":1,
+    "name":"Moutain Walkers",
+    "price":219.5,
+    "stock":12
+}
 ```
 
+APIs with Server-rendered Frontends
+
+Server: API => Server: Razor Pages OR MVC => Browser: HTML
+
+#### REST APIs with Web API
+
+- Leverage HTTP protocol
+- Each piece of data is available at a unique location (/products /product/1, ...)
+- HTTP method are mapped to actions (GET get new data, POST introduce new data, PUT update data)
+- HTTP status code are used to determine outcomes (200a all good, 404 not found, ...)
+- Response can also contain pointers on what to do next
+
+#### Web API
+
+Example solution has 3 projects:
+
+- CarveRock-BlazorWebAssembly
+- CarveRock-Shared: A class library
+- CarveRock-WebApi
+
 ```cs
+// CarveRock-WebApi/Program.cs
+using CarvedRock_WebApi.Data;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+builder.Services.AddControllers();// add controler support to the dependency inject container
+builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<IProductRepository, ProductRepository>();
+
+var app = builder.Build();
+
+// support for Swagger, a support for OpenAPI a standard that describes a REST API
+app.UseSwagger();
+// also support for the UI, we can find it by: localhost:port/swagger/index.html
+app.UseSwaggerUI();
+// swagger acts as documentation for this API
+
+app.UseHttpsRedirection();
+
+app.UseCors(b => { 
+    b.WithOrigins("https://localhost:7220"); 
+    b.AllowAnyHeader(); 
+    b.AllowAnyMethod(); 
+});
+
+app.UseAuthorization();
+
+app.MapControllers(); // we map the controllers, without a routing table
+
+app.Run();
 ```
+
+The heart of the API
+
+```cs
+// CarveRock-WebApi/Controllers/ProductControllers.cs
+using CarvedRock_Shared.Data;
+using CarvedRock_WebApi.Data;
+using Microsoft.AspNetCore.Mvc;
+
+namespace CarvedRock_WebApi.Controllers
+{
+    [ApiController] // attribute allows API feature on the controller
+    [Route("[controller]")]
+    public class ProductController : ControllerBase // derives
+    {
+        private readonly IProductRepository productRepository;
+
+        public ProductController(IProductRepository productRepository)
+        {
+            this.productRepository = productRepository;
+        }
+
+        [HttpGet] // allows routing
+        public async Task<IActionResult> GetAll()
+        {
+            var products = await productRepository.GetAll();
+            if (products.Count() == 0)
+                return NoContent();
+
+            return Ok(products);
+        }
+
+        [HttpGet("{id:int}")] // expects an int id on the URL
+        public async Task<IActionResult> GetOne(int id)
+        {
+            var product = await productRepository.GetOne(id);
+
+            if (product == null)
+                return NotFound();
+
+            return Ok(product);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post(Product product)
+        {
+            //if (!ModelState.IsValid)
+            //    return BadRequest(ModelState);
+                
+            await productRepository.Add(product);
+            return CreatedAtAction(nameof(GetOne), new { id = product.Id }, product);
+        }
+    }
+}
+```
+
+We can test it out by using the browser and url: *localhost:port/product*, we should see the JSON values.
+And we can test further with an id *localhost:port/product/1*
+
+Now for the Client part
+
+```cs
+// CarveRock-BlazorWebAssembly/Program.cs
+using CarvedRock_BlazorWebAssembly;
+using CarvedRock_BlazorWebAssembly.ApiServices;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+
+var builder = WebAssemblyHostBuilder.CreateDefault(args);
+builder.RootComponents.Add<App>("#app");
+
+// dependecy injector container
+// HtppClient is the class to use to do HTTP requests, configures to send requests to the API
+builder.Services.AddScoped(sp => // a lambda syntax is another way to register a type 
+    new HttpClient { BaseAddress = new Uri("https://localhost:7273") });
+builder.Services.AddScoped<IProductApiService, ProductApiService>();
+
+await builder.Build().RunAsync();
+```
+
+#### Web API: Minimal APIs
+
+We call another method `AddEndPointsApiExplorer()` that gives us the ability to specify endpoints directly in the pipeline by using MapGet method
+
+```cs
+// CarvedRock-WebApi/Program.cs
+using CarveRock_webApi.Data;
+
+var builder = WebApplication.CreateBuilder();
+
+builder.Services.AddEndPointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddCors();
+builder.Services.AddSingleton<IProductRepository, ProductRepository()>;
+
+var app = builder.Build();
+...
+/* using the MapGet method on the app object
+*  first parameter: endpoint name
+*  second parameter: delicate type for which we have to specify a function
+*/
+app.MapGet("/product", async (IProductRepository productRepository)=>
+{
+    var products = await productRepository.GetAll();
+    if (products.Count == 0)
+        return Results.NoContent(); 
+        // still return action result object, 
+        // are now contained in the Results static class
+    return Results.Ok(products);
+});
+
+app.MapGet("/products/{id:int}", async (int id, IProductRepository productRepository)=>{
+    var product = await productRepository.GetOne(id);
+    if(product == null)
+        return Results.Notfound();
+    return Results.Ok(product);
+})
+    .WithName("GetOne");
+
+app.MapPost("/product", async (Product product, IProductRepository productRepository)=>{
+    //no validation, we need to write our own
+
+    wait productRepository.add(product);
+    return Results.CreteAtRoute("GetOne", new { id = product.Id}, product);
+});
+
+...
+```
+
+#### gRPC API
+
+RPC: Remote Procedure (a method) Call
+
+The contract or the proto file, is shared between the actual API and the application that uses it called the client here.
+
+Both have tooling that can take a proto file and generate code from it.
+Example:
+
+```cs
+// .proto
+Proto
+{
+    Foo();
+}
+/*
+*  Classes are generated
+*/ 
+// API/ Server
+virtual Foo()
+{}
+    "ProtoBuf"
+// Client
+Client.Foo()
+```
+
+For our gRPC example:
+
+```cs
+// Program.cs
+using CarvedRock_gRPC.Data;
+using CarvedRock_gRPC.Services;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddGrpc();
+builder.Services.AddSingleton<IProductRepository, ProductRepository>();
+
+var app = builder.Build();
+
+app.MaprpcService<ProductService>();
+
+app.Run();
+```
+
+#### Web API and gRPC Compared
+
+|REST with Web API|gRPC|
+|---|---|
+|Content first (URLs, HTTP verb, JSON)| Contract first (proto file)|
+|Message content is human reasable| Contract is human readable|
+|Utilizes HTTP| Hides remoting complexity using RPC|
+|suitable to external applications, public APIs| suitable to internal applicationsn, same organization, when contract changes it must be |
+
+We can always use both depending on the use.
 
 ```cs
 ```
