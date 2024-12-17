@@ -385,7 +385,7 @@ Types of Blazor apps:
 - Blazor WebAssembly
 - Blazor Server
 
-#### Blazor
+#### Blazor WebAssembly
 
 A client-rendered, component-based single-page application frameword using .NET and C#.
 
@@ -449,10 +449,9 @@ The HTML is in the `wwwroot/index.html` folder.
 Inside the `App.razor`
 
 ```cs
-// App.
-// A component on BLazor
+// App.razor
 // The attributes used on the component are properties in the class behind the component
-<Router AppAssembly="@typeof(App).Assembly">
+<Router AppAssembly="@typeof(App).Assembly"> // A component on BLazor
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />
@@ -464,6 +463,152 @@ Inside the `App.razor`
         </LayoutView>
     </NotFound>
 </Router>
+```
+
+Inside the `index.razor` file:
+
+```cs
+// Index.razor
+@page "/" // this will route the website, replace on the initial URL
+@using CarvedRock_BlazorWebAssembly.Data
+// this line will allow the injection of data into the class
+@inject IProductRepository productRepository 
+
+<div class="row">
+    <h4 class="mb-3 ml-5">Today's specials:</h4>
+</div>
+
+@foreach (var product in Products)
+{
+    <div class="row mb-4">
+        <div class="col-2 text-center"><img height="80" src="Images/@product.PhotoFileName" alt="Product image" /></div>
+        <div class="col-2 my-auto">@product.Name</div>
+        <div class="col-2 my-auto">$@product.Price</div>
+        <div class="col-2 my-auto">@product.Stock in stock</div>
+    </div>
+}
+
+<div class="row">
+    <div class="ml-5 mt-3">
+        <NavLink href="create">New product</NavLink>
+    </div>
+</div>
+
+@code {
+    private IEnumerable<Product> Products { get; set; } = 
+        Enumerable.Empty<Product>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Products = await productRepository.GetAll();
+    }
+}
+```
+
+For example, let's create a component that renders the logo using a certain height:
+
+```cs
+// Components/Logo.razor
+// simple html, notice we reference a propertie called Height
+<img height="@Height" src="/Images/carved-rock-logo.png" alt="logo" />
+
+@code {
+    // the parameter attribute it indicates that it can be set by another component
+    [Parameter]
+    public string Height { get; set; } = "200";
+}
+
+/*
+* Here we see it being used in the Shared/MainLayout.razor
+*/
+
+﻿@inherits LayoutComponentBase
+
+<PageTitle>CarvedRock-BlazorServer</PageTitle>
+
+<div class="page">
+    <div class="container">
+        <header class="row">
+            <div class="col-md-5 mb-4">
+                // HERE, we provide a value for the height property
+                <Logo Height="150" />
+            </div>
+            <div class="col-md-7 mt-5">
+                For outdoorsy types
+            </div>
+        </header>
+        @Body
+    </div>
+</div>
+```
+
+Now the logo component is created we can used it anywhere else on the project with different height if needed.
+
+#### Blazor Server
+
+Once an application starts it will establish a two-way connection (SignalR) between the Server and the Browser.
+
+The landing page is rendered by the server and the browser gets the resulting HTML. The server will be notified of all user activities, process it and send back the new rendered HTML.
+
+The differences are as follow:
+
+```cs
+// Program.cs
+...
+// uses the builder for a server rendered application
+var builder = WebApplication.CreateBuilder(args);
+// adds a RazorPages classs to the depedency injection container to render the pages
+builder.Services.AddRazorPages();
+builder.Services.AddServerSideBlazor();
+builder.Services.AddSingleton<IProductRepository, ProductRepository()>;
+...
+
+// here we have some midleware
+app.UseExceptionHandler("/Error");
+app.UseRouting();
+// makes sure the SignalR(class that enables the two-way connection) hub is mapped to a URL
+app.MapBlazorHub();
+// when a non-SignalR request comes in, such as the very first root request the _Host will be rendered
+app.MapFallbackToPage("/_Host");
+
+app.Run();
+
+/*
+* _Host.cshtml
+*/
+
+@page "/"
+@namespace CarvedRock_BlazorServer.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+// renders the app root component using a tag helper
+<component type="typeof(App)" render-mode="ServerPrerendered" />
+// after the App.razor is rendered and it's the same as for the Blazor WebAssembly
+```
+
+One difference is that the `_Layout.cshtml` now cointains the outer HTML structure and loads a javascript called "blazor.server.js" which will maintain the SignalR connection.
+
+#### Comparing Both Versions
+
+|Blazor WebAssembly |Blazor Server|
+|---|---|
+|Minimizes sever load|Server is a work horse|
+|Scaling is cost effective|Potentially more scalling costs|
+|Longer initial loading times|Normal initial loading times|
+|Option to work offline|Requires connection|
+|Retricted to browser capabilities| Can use most .NET APIs|
+
+Both options: in .NET 8 and later: Full stack Blazor applications
+
+We can start one on Visual Studio with a Blazor Web App.
+
+Default Rendering Mode: Static, it switches to WebAssembly once all is loaded.
+
+### APIs
+
+```cs
 ```
 
 ```cs
