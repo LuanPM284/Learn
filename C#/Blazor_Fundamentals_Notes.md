@@ -285,6 +285,218 @@ app.MapRazorComponents<App>()
 
 ### Creating Your First Blazor Application
 
+A sample component with Razor Code
+
+```md
+// Home.razoz
+ @page "/" <!-- Directive -->
+<PageTitle>Home</PageTitle> <!-- Nested component-->
+<h1>Welcome to Bethanys's Pie Shop </h1> <!-- Plain HTML content-->
+Welcome, the date is @currentdate <!-- Display of code field value-->
+<!-- code block-->
+@code 
+{
+  private string currentDate = DateTime.Now.ToLongDateString();
+}
+```
+
+- Using Code
+  - Mixes approah: @code block
+  - Code-behind: Component class
+
+```cs
+// Home.razor.cs
+public partial calss Home
+{
+  private string currentDate : DateTime.Now.ToLongDateString();
+}
+```
+
+#### Component Initialization, lifecyle events
+
+```cs
+public partial class Home
+{
+  private string currentDate = string.Empty;
+  protected override void OnInitialized()
+  {
+    currentdate = DateTime.Now.ToLongDateString();
+  }
+}
+```
+
+We create a project name "BethanysPieShopHRM" with a none render type. From the files provided by Plurasight, in the m4 folder, copy the BethanysPieShopHRM.Shared into project folder.
+
+After that, add the project to the main solution on visual code studio.
+
+This project contain the classes that are going to be used during this course, Employee, Country, etc.
+
+Don't forget to add the reference from the .Shared project to the main one. By rigth clicking and choosing to add a new project reference.
+
+Now we can start working.
+
+---
+
+Demo
+
+Create a EmployeeOverview component inside `Pages/`. We separe the code block into it's own component class.
+
+We create a new folder in the project, name `Services/`. This will be used to create some data so we can develop the project further. The complete code can be found on the files provided by pluralsight, `m4/` folder, inside the `M4 Snippets.txt` file. Only the first part was used for the mock data.
+
+Now we need to create a component class that will show us data on initialization, for that we will write the following:
+
+```cs
+// EmployeeOverview.razor.cs
+// using this references, namespaces
+using BethanysPieShopHRM.Services;
+using BethanysPieShopHRM.Shared.Domain;
+
+namespace BethanysPieShopHRM.Components.Pages // Pages bein the folder
+{
+    public partial class EmployeeOverview // partiel because part of razor component
+    {
+      // a property of a generic List with Employee type objects stored, named Employees
+      public List<Employee> Employees { get; set; }= default!; 
+      // an async function that will handle an action
+      protected async override Task OnInitializedAsync()
+      {
+        // Employees object receives the data from MockDataServices of the type Employees 
+        Employees = MockDataService.Employees
+      }
+    }
+}
+```
+
+For the  UI part we have the following:
+
+```cs
+// EmployeeOverview.razor
+@page "/employeeoverview" // the route
+
+<h1>Employee Overview</h1>
+
+<table class="table table-light">
+    <thead class="table-primary">
+        <tr>
+            <th></th>
+            <th>Employee ID</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        // a loop inside a List, or an indexable object
+        @foreach (var employee in Employees)
+        {
+            <tr>
+                // we do a explicit string ? where we can add variables inside
+                <td><img src="@($"https://gillcleerenpluralsight.blob.core.windows.net/person/{employee.EmployeeId}-small.jpg")" class="rounded-circle" /></td>
+                <td>@employee.EmployeeId</td>// '@' allows us to call variables, this case the EmmployeeId
+                <td>@employee.FirstName</td>
+                <td>@employee.LastName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+```
+
+#### Streaming Rendering
+
+- Layer on top of SSR
+- User sees initial content
+- Extra content can be loaded "later"
+- Useful with slow database calls
+- HTML "streams" to the browser
+  - No extra calls required
+- Isn't adding interactivity
+
+Demo:
+
+```cs
+// EmployeeOverview.razor.cs
+using BethanysPieShopHRM.Services;
+using BethanysPieShopHRM.Shared.Domain;
+
+namespace BethanysPieShopHRM.Components.Pages
+{
+    public partial class EmployeeOverview
+    {   /*here we initialize the property so we can show it, when null we get exception error
+        * public List<Employee> Employees { get; set; } = new List<Employee>();
+        *
+        * we need it to be null in order to show the initial loading message
+        * simulates a await from the server for data
+        */
+        public List<Employee> Employees { get; set; } = default!;
+
+        protected async override Task OnInitializedAsync()
+        {
+            await Task.Delay(2000);
+            Employees = MockDataService.Employees;
+        }
+    }
+}
+
+// EmployeeOverview.razor
+@page "/employeeoverview"
+/* 
+    This is needed for an initial response HTML before we receive
+    the rest of the data from the server, the _framework/blazor.web.js 
+    in the App.razor is what allows the content to be updated
+*/
+@attribute [StreamRendering(true)] 
+
+<h1>Employee Overview</h1>
+/* 
+    This will allow us to have a delay while the server prepares the data
+    here is just artificial, with a Delay()
+*/
+@if (Employees == null) // the property is default null in this case
+{
+    <p><em>Loading ... Wait Please!!!!</em></p>
+}
+else
+{    
+  // rest of the code
+}
+
+```
+
+#### Adding Basic Navigation
+
+Navigating in Blazor Applications
+
+- Router in App.razor is starting point
+- @page directive enables routing to the component (component can have more than one)
+- Can accept parameters
+- Use NavigationManager for code-based navigation
+
+```cs
+@page "employeeoverview"
+@page "employeelist"
+
+// OR
+@page "/employeedetail/{EmployeeId}"
+// this is a parameter in the route, a property that can be given a value and changed
+[Parameter]
+public string EmployeeId { get; set; }
+
+// OR
+@page "/employeedetail/{Id:int}" // here the id is type int, variable:type
+[Parameter]
+public int Id { get; set; }
+
+// OR
+[SupplyParameterFromQuerry(Name = "id")]
+public string EmployeeId { get; set; }
+```
+
+```cs
+```
+
+```cs
+```
+
 ```cs
 ```
 
